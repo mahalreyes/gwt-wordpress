@@ -66,30 +66,30 @@ jQuery(document).ready(function($){
 
 	// Accessibility Panel
     $('#accessibility-mode').click(function (e) {
-        e.preventDefault();
-        $(this).toggleClass('active');
-        if ($(this).hasClass('active')) {
-            $('#accessibility-widget').animate({
-                left: '0px'
-            });
+		e.preventDefault();
+		$(this).toggleClass('active');
+		if ($(this).hasClass('active')) {
+			$('#accessibility-widget').animate({
+				right: '0px'
+			});
 			$(this).animate({
-				left: '0px',
+				right: '0px',
 				opacity: 1,
 				paddingLeft: '9px',
 				paddingRight: '9px'
 			});
-        } else {
-            $('#accessibility-widget').animate({
-                left: '-42px'
-            });
+		} else {
+			$('#accessibility-widget').animate({
+				right: '-42px'
+			});
 			$(this).animate({
-				left: '-10px',
+				right: '-10px',
 				opacity: 0.8,
 				paddingLeft: '5px',
 				paddingRight: '5px'
 			});
-        }
-    });
+		}
+	});
 	
 	// Pop-up Accessibility Statement
 	var statementActive = false;

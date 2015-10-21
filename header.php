@@ -74,14 +74,14 @@
   </ul>
 </div>
 
-<div id="accessibility-widget">
+<span id="accessibility-widget">
   <ul>
     <li><a href="#" id="accessibility-mode" title="Accessibility Menu"><span class="offscreen">Toggle Accessibility Menu</span></a></li>
     <li><a href="#" id="accessibility-statement" title="Accessibility Statement" class="toggle-statement"><span class="offscreen">Toggle Accessibility Statement</span></a></li>
     <li><a href="#" id="accessibility-contrast" class="toggle-contrast" title="Toggle High Contrast"><span class="offscreen">Toggle High Contrast</span></a></li>
     <li><a href="#" id="accessibility-grayscale" class="toggle-grayscale" title="Toggle Grey Scale"><span class="offscreen">Toggle Grayscale</span></a></li>
   </ul>
-</div>
+</span>
 
 <div id="accessibility-statement-content" title="Accessibility Statement" role="dialog">
   <textarea class="statement-textarea" readonly>
@@ -145,7 +145,7 @@ Press esc, or click the close the button to close this dialog box.
 
 <div id="nav-mega-menu">
   <?php
-  $parent_args = array( 'posts_per_page' => 4, 'post_type' => 'govph_megamenu', 'post_parent' => 0 );
+  $parent_args = array( 'posts_per_page' => 4, 'post_type' => 'gwt_megamenu', 'post_parent' => 0 );
   $parent_loop = new WP_Query( $parent_args );
   if ( $parent_loop->have_posts() ) :
     while ( $parent_loop->have_posts() ) : $parent_loop->the_post();
@@ -163,7 +163,7 @@ Press esc, or click the close the button to close this dialog box.
           <ul class="tabs vertical">
 
            <?php $parent_page_id = ( '0' != $post->post_parent ? $post->post_parent : $post->ID );
-           $mypages = get_pages( array( 'child_of' => $parent_page_id,  'post_type' => 'govph_megamenu', 'sort_column' => 'post_date' ) );
+           $mypages = get_pages( array( 'child_of' => $parent_page_id,  'post_type' => 'gwt_megamenu', 'sort_column' => 'post_date' ) );
            $i = 1;
            $j = 1;
     

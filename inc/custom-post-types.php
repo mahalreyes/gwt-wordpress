@@ -1,9 +1,9 @@
 <?php
 
 // Mega Menu
-add_action('init', 'govph_megamenu');
-function govph_megamenu() {
-  register_post_type('govph_megamenu', array(
+add_action('init', 'gwt_megamenu');
+function gwt_megamenu() {
+  register_post_type('gwt_megamenu', array(
     'label' => 'Mega Menus',
     'description' => '',
     'public' => true,
@@ -12,7 +12,7 @@ function govph_megamenu() {
     'capability_type' => 'post',
     'map_meta_cap' => true,
     'hierarchical' => true,
-    'rewrite' => array('slug' => 'govph-megamenu', 'with_front' => true),
+    'rewrite' => array('slug' => 'gwt-megamenu', 'with_front' => true),
     'query_var' => true,
     'menu_position' => '3',
     'supports' => array('title','editor','trackbacks','custom-fields','thumbnail', 'page-attributes'),

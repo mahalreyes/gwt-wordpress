@@ -65,6 +65,8 @@ else{
 ?>
 
 <!-- agency footer -->
+<?php if(is_active_sidebar('footer-1') || is_active_sidebar('footer-2') || is_active_sidebar('footer-3') ||
+is_active_sidebar('footer-4')): ?>
 <div id="footer" name="agencyfooter">
   <div id="supplementary" class="row">
     <?php if(is_active_sidebar('footer-1')): ?>
@@ -96,6 +98,7 @@ else{
     <?php endif; // if active footer-4 ?>
   </div>
 </div>
+<?php endif; ?>
 <div id="darklight"></div>
 
 <!-- standard footer -->

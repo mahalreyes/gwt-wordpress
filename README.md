@@ -74,3 +74,6 @@ Use this as a a guide for creating your banner slider images:
 - Fix Panel Top extra padding issue.
 - Added mega menu feature
 - Sticky top menu
+
+**11/11/2015**
+- Updated standard footer link to github.io CDN

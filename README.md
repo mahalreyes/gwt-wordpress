@@ -9,10 +9,11 @@ Use this as a a guide for creating your banner slider images:
 ## Known bugs and requests for enhancements (RFEs)
 For a list of known issues and RFEs, check the [issue tracking system](https://github.com/istiphani/gwt-wordpress/issues).
 
-## Future updates (v2.1 to be release on Apr. 20, 2016
+## Future updates (v2.1)
  - Enhanced PST module
  - Foundation 6 framework
  - Enhanced accessibility features
+ - Est. release date: April 20, 2016
 
 ## CHANGE LOGS
 **02/29/2016**

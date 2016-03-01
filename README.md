@@ -6,7 +6,7 @@ Use this as a a guide for creating your banner slider images:
 - Linked article should be indicated in the content field
 
 ## Known bugs and requests for enhancements (RFEs)
-For a list of known issues and RFEs, check the [issue tracking system](https://github.com/istiphani/gwt-wordpress/issues).
+For a list of known issues and RFEs, check the [issue tracking system](https://github.com/iGovPhil/gwt-wordpress/issues).
 
 ## Future updates (v2.1)
  - Enhanced PST module

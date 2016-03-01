@@ -31,6 +31,11 @@ require get_template_directory() . '/inc/function-excerpt.php';
 require get_template_directory() . '/inc/function-enqueue_scripts.php';
 
 /**
+ * Default sidebar contents
+ */
+require get_template_directory() . '/inc/function-sidebar.php';
+
+/**
  * Disable comment functions
  */
 require get_template_directory() . '/inc/disable-comments.php';
@@ -77,3 +82,6 @@ require get_template_directory() . '/inc/vendors/envato-flex-slider/envato-flex-
 
 // make clickable content
 apply_filters('the_content','make_clickable');
+
+// post thumbnails
+add_theme_support('post-thumbnails');

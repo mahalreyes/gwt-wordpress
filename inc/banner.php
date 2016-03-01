@@ -36,7 +36,7 @@ if(!is_home()){
     <?php endif; ?>
 
     <?php if($banner_slider = efs_get_slider()): ?>
-      <div class="<?php echo $banner_class ?> columns">
+      <div class="<?php echo $banner_class ?>">
       <?php echo $banner_slider ?>
       </div>
     <?php endif; ?>

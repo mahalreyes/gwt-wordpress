@@ -31,18 +31,39 @@
       <?php govph_displayoptions( 'govph_headerimage' ); ?>
     }
     
-	h1.logo a {
+    h1.logo a {
       <?php govph_displayoptions( 'govph_header_font_color' ); ?>
       <?php govph_displayoptions( 'govph_logo_position' ); ?>
-	}
+    }
     
     div.container-banner {
-	  <?php govph_displayoptions( 'govph_slidercolor' ); ?>
-	  <?php govph_displayoptions( 'govph_sliderimage' ); ?>
+      <?php govph_displayoptions( 'govph_slidercolor' ); ?>
+      <?php govph_displayoptions( 'govph_sliderimage' ); ?>
+    }
+
+    #sidebar-left .widget, #sidebar-right .widget, .panel {
+      <?php govph_displayoptions( 'govph_custom_border_width' ); ?>
+      <?php govph_displayoptions( 'govph_custom_border_radius' ); ?>
+      <?php govph_displayoptions( 'govph_custom_border_color' ); ?>
+      <?php govph_displayoptions( 'govph_custom_background_color' ); ?>
+    }
+
+    .container-main .entry-title a {
+      <?php govph_displayoptions( 'govph_custom_headings_text' ); ?>
+      <?php govph_displayoptions( 'govph_custom_headings_size' ); ?>
+    }
+
+    .container-banner .entry-title {
+      <?php govph_displayoptions( 'govph_custom_headings_text' ); ?>
+      <?php govph_displayoptions( 'govph_custom_headings_inner_page_size' ); ?>
+    }
+
+    #footer {
+      <?php govph_displayoptions( 'govph_custom_footer_background_color' ); ?>
     }
   </style>
   <script type="text/javascript" language="javascript">
-	var template_directory = '<?php echo get_template_directory_uri() ?>';
+    var template_directory = '<?php echo get_template_directory_uri() ?>';
   </script>
 </head>
 
@@ -56,6 +77,7 @@
   </ul>
 </div>
 
+<!--
 <div id="accessibility-shortcuts">
   <ul>
     <li><a href="#" class="skips toggle-statement" title="Toggle Accessibility Statement" accesskey="0">Toggle Accessibility Statement</a></li>
@@ -73,6 +95,7 @@
     <?php endif; ?>
   </ul>
 </div>
+-->
 
 <span id="accessibility-widget">
   <ul>
@@ -97,7 +120,8 @@ For Internet Explorer press (Alt+Shift+shortcut_key) then press (enter)
 Accessibility Statement (Combination + 0): Statement page that will show the available accessibility keys. 
 Home Page (Combination + 1): Accessibility key for redirecting to homepage. 
 Main Content (Combination + R): Shortcut for viewing the content section of the current page. 
-FAQ (Combination + 5): Shortcut for FAQ page. Contact (Combination + C): Shortcut for contact page or form inquiries. 
+FAQ (Combination + 5): Shortcut for FAQ page. 
+Contact (Combination + C): Shortcut for contact page or form inquiries. 
 Feedback (Combination + K): Shortcut for feedback page. 
 Site Map (Combination + M): Shortcut for site map (footer agency) section of the page. 
 Search (Combination + S): Shortcut for search page. 
@@ -122,7 +146,10 @@ Press esc, or click the close the button to close this dialog box.
           </ul>
           
           <section class="top-bar-section">
-            
+            <!-- left navigation -->
+            <ul class="left">
+              <?php wp_nav_menu( array('theme_location'  => 'topbar_left', 'items_wrap' => '%3$s', 'container' => false, 'walker' => new Topbar_Nav_Menu() )); ?> 
+            </ul>
             <!-- right navigation -->
             <ul class="right">
             <?php if(govph_displayoptions( 'govph_disable_search' )): ?>
@@ -130,13 +157,8 @@ Press esc, or click the close the button to close this dialog box.
             <?php endif ?>
             <?php wp_nav_menu( array('theme_location'  => 'topbar_right', 'items_wrap' => '%3$s', 'container' => false, 'walker' => new Topbar_Nav_Menu() )); ?>
             </ul>
-          
-            <!-- left navigation -->
-            <ul class="left">
-              <?php wp_nav_menu( array('theme_location'  => 'topbar_left', 'items_wrap' => '%3$s', 'container' => false, 'walker' => new Topbar_Nav_Menu() )); ?> 
-            </ul>
-          
           </section>
+
         </nav>
       </div>
     </div>
@@ -150,38 +172,36 @@ Press esc, or click the close the button to close this dialog box.
   if ( $parent_loop->have_posts() ) :
     while ( $parent_loop->have_posts() ) : $parent_loop->the_post();
 
-     $title_to_id = str_replace(' ', '_', strtolower(get_the_title())); ?>
+      $title_to_id = str_replace(' ', '_', strtolower(get_the_title())); ?>
 
       <div id="<?php echo $title_to_id; ?>-megamenu" class="megamenu">
-       <div id="nav-megamenu" class="row fullwidth collapse">
+      <div id="nav-megamenu" class="row fullwidth collapse">
 	    
-		<!-- start of left column mega menu -->
+		    <!-- start of left column mega menu -->
         <div class="large-3 columns nav-sub">
-         <div>
-          <h3><?php the_title(); ?></h3>
-          <p><?php the_content(); ?></p>
-          <ul class="tabs vertical">
+          <div>
+            <h3><?php the_title(); ?></h3>
+            <p><?php the_content(); ?></p>
+            <ul class="tabs vertical">
 
-           <?php $parent_page_id = ( '0' != $post->post_parent ? $post->post_parent : $post->ID );
-           $mypages = get_pages( array( 'child_of' => $parent_page_id,  'post_type' => 'gwt_megamenu', 'sort_column' => 'post_date' ) );
-           $i = 1;
-           $j = 1;
-    
-           foreach( $mypages as $page ) :
-            $content = $page->post_content;
-            $content = apply_filters( 'the_content', $content ); ?>
-
-            <li class="tab-title<?php echo $i === 1 ? ' active' : ''; ?>"><a href="#panel<?php echo $i; ?>" data-tab-link><?php echo $page->post_title; ?></a></li>
-           <?php $i++; endforeach; ?>
-
-          </ul>                  
-         </div>
+              <?php $parent_page_id = ( '0' != $post->post_parent ? $post->post_parent : $post->ID );
+              $mypages = get_pages( array( 'child_of' => $parent_page_id,  'post_type' => 'gwt_megamenu', 'sort_column' => 'post_date' ) );
+              $i = 1;
+              $j = 1;
+      
+              foreach( $mypages as $page ) :
+                $content = $page->post_content;
+                $content = apply_filters( 'the_content', $content ); ?>
+                <li class="tab-title<?php echo $i === 1 ? ' active' : ''; ?>"><a href="#panel<?php echo $i; ?>" data-tab-link><?php echo $page->post_title; ?></a></li>
+              <?php $i++; endforeach; ?>
+            </ul>
+          </div>
         </div> 
-		<!-- end of query -->
+		    <!-- end of query -->
 
-		<!-- start of right column mega menu -->
+		    <!-- start of right column mega menu -->
         <div class="nav-sub-content large-9 columns ">
-         <div class="tabs-content vertical">
+        <div class="tabs-content vertical">
           
 		  <?php foreach( $mypages as $page ) :
           $content = $page->post_content;

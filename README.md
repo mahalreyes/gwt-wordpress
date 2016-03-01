@@ -10,28 +10,29 @@ Use this as a a guide for creating your banner slider images:
 
 ###### Known bug
 - ~~Fix notice error for wp_enqueue_script~~
+- ~~Post or Page published date on masthead~~
 - Fix left and right template page layout issue
 - Separate Post limit to image slider
-- Compatibility issue on older version of PHP 5.2, causes white screen
+- ~~Compatibility issue on older version of PHP 5.2, causes white screen~~
 
 ###### Future updates
-- Add feature image.
+- ~~Add feature image.~~
 - Modify the slider into native widget
 - add an option to add automatic excerpt (read me) or manually add it
 - mac accessbility key - alt + option
 - feedback access key, allow alternate url
 - crossbrowser checklist
 - left sidebar template, right sidebar template layout issue.
-- title, remove text transform uppercase
-- Font
-  - hierarchy
-  - headings
+- ~~title, remove text transform uppercase~~
+- ~~Font~~
+  - ~~hierarchy~~
+  - ~~headings~~
 - Media Query
   - Tablet/phone: Max Size 1024px
   - Adjust pixel-size ratio
   - Foundation media queries
-- Panel
-  - Panel content conditions
+- ~~Panel~~
+  - ~~Panel content conditions~~
 
 ###### CHANGE LOGS
 **03/18/2014**
@@ -48,16 +49,16 @@ Use this as a a guide for creating your banner slider images:
 - Smaller headings for Agency footer (use h3 tag)
 - Smaller headings for Content Post (use h5 tag)
 - Smaller headings for widgets
-- Banner title paddings
+- Bannerd title paddings
 - Remove box design on top and bottom panel, added custom class: box-mode
 - Smaller headings for Post Navigation (pagination) (use h4)
 - Automatic trim of character/word for Post lists
 - Responsive Logo Support
 - Accessibility shortcut bug fix
-- Create an option to automatically trim at specific characters/word for Post lists
-- Create an option to remove published date
-- Create an option to remove author
-- Remove box effect on Author
+- Created an option to automatically trim at specific characters/word for Post lists
+- Created an option to remove published date
+- Created an option to remove author
+- Removed box effect on Author
 
 **03/19/2015**
 - Added breadcrumbs support
@@ -70,10 +71,37 @@ Use this as a a guide for creating your banner slider images:
   - Toggle High contrast mode
   - Toggle Grey scale
   - Popup Accessibility Statement
-- Fix Breadcrumbs '/' after Youre Here:
-- Fix Panel Top extra padding issue.
+- Fixed Breadcrumbs '/' after Youre Here:
+- Fixed Panel Top extra padding issue.
 - Added mega menu feature
 - Sticky top menu
 
-**11/11/2015**
-- Updated standard footer link to github.io CDN
+**09/30/2015**
+- Fixed Agency Footer extra padding.
+- Changed the accessibility widget to right side 
+
+**02/29/2016**
+- Fixed mega menu structure
+- Fixed banner slider full width
+- Added feature image on post
+- Added default widgets on theme activation
+	- transparency seal Logo widget
+	- philippine standard time widget
+- Added theme customization on template's theme option
+    - Masthead logo image with text
+        - agency name
+        - tagline
+        - font color
+        - image logo alt text
+    - Content panel and sidebar customization
+        - border width
+        - border color
+        - border radius
+        - background color
+    - Content header font size and rendering
+    - Agency Footer's background color customization
+- Changed version branding to version 2.0 (Pansit)
+- Removed the Accessibility Add-on
+    - High Contrast Mode
+    - Grayscale Mode
+    - Toggle font size

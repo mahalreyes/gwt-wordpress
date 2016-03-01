@@ -1,5 +1,5 @@
 /*
- * scripts for mega menu and accessibility features.
+ * GWT theme scripts.
  * 
  */
 
@@ -30,6 +30,31 @@ function eraseCookie(name) {
 }
 
 jQuery(document).ready(function($){
+	
+	// Back to top elavator
+	var offset = 220;
+    var duration = 500;
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > offset) {
+            $('#back-to-top').fadeIn(duration);
+        } else {
+            $('#back-to-top').fadeOut(duration);
+        }
+    });
+    
+    $('#back-to-top').click(function(event) {
+        event.preventDefault();
+        $('html, body').animate({scrollTop: 0}, duration);
+        return false;
+    });
+
+    $('#accessibility-links ul li a').focus(function(){
+        $(this).parent().addClass('access-focus');
+    });
+    $('#accessibility-links ul li a').blur(function(){
+        $(this).parent().removeClass('access-focus');
+    })
+	
 	// Mega Menu
 	var hasMegaMenu = $('.has-megamenu');
 	$('.megamenu').hide();
@@ -63,6 +88,9 @@ jQuery(document).ready(function($){
         parentContainer.find('.content').removeClass('active').hide();
         parentContainer.find(menuId).addClass('active').show();
     });
+	
+	// Transparency Seal
+    $('#tp-seal').parent().parent().parent().css('text-align','center');
 
 	// Accessibility Panel
     $('#accessibility-mode').click(function (e) {
@@ -185,4 +213,16 @@ jQuery(document).ready(function($){
         }
     });
 	
-})
+	// Banner slider
+    $('.rslides').responsiveSlides({
+        auto: true,
+        pager: true,
+        nav: true,
+        speed: 500,
+        namespace: 'rslides',
+        playButton: true,
+    });
+    
+});
+
+

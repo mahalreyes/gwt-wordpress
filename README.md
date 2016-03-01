@@ -1,4 +1,4 @@
-#Wordpress GWT
+#Government Web Template (GWT) for WordPress
 
 Use this as a a guide for creating your banner slider images:
 - Image should be inserted as a featured image, full size

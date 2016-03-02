@@ -77,7 +77,6 @@
   </ul>
 </div>
 
-<!--
 <div id="accessibility-shortcuts">
   <ul>
     <li><a href="#" class="skips toggle-statement" title="Toggle Accessibility Statement" accesskey="0">Toggle Accessibility Statement</a></li>
@@ -95,8 +94,8 @@
     <?php endif; ?>
   </ul>
 </div>
--->
 
+<!--
 <span id="accessibility-widget">
   <ul>
     <li><a href="#" id="accessibility-mode" title="Accessibility Menu"><span class="offscreen">Toggle Accessibility Menu</span></a></li>
@@ -130,6 +129,7 @@ Press esc, or click the close the button to close this dialog box.
   </textarea>
   <input type="button" value="close" class="toggle-statement" />
 </div>
+-->
 
 <!-- topbar navigation -->  
 <div id="main-nav">

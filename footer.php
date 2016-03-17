@@ -108,7 +108,7 @@ is_active_sidebar('footer-4')): ?>
   var js, gjs = d.getElementById('gwt-standard-footer');
 
   js = d.createElement(s); js.id = id;
-  js.src = "//igovphil.github.io/gwt-footer/footer.js";
+  js.src = "//gwhs.i.gov.ph/gwt-footer/footer.js";
   gjs.parentNode.insertBefore(js, gjs);
 }(document, 'script', 'gwt-footer-jsdk'));
 </script>

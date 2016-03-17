@@ -2,21 +2,18 @@
   $banner_class = ' large-12';
   $banner_2_class = '';
   $banner_3_class = '';
-  // if both banner are available
   if(is_active_sidebar('banner-section-1') && is_active_sidebar('banner-section-2')){
-    $banner_class = ' large-6';
+    $banner_class = 'large-6 columns';
     $banner_2_class = ' large-3';
     $banner_3_class = ' large-3';
   }
   elseif(is_active_sidebar('banner-section-1') && !is_active_sidebar('banner-section-2')){
-    $banner_class = ' large-8';
+    $banner_class = 'large-8 columns';
     $banner_2_class = ' large-4';
-    //$banner_3_class = '';
   }
   elseif(!is_active_sidebar('banner-section-1') && is_active_sidebar('banner-section-2')){
-    $banner_class = ' large-9';
-    //$banner_2_class = '';
-    $banner_3_class = ' large-3';
+    $banner_class = 'large-9 columns';
+    $banner_3_class = 'large-3';
   }
   $banner_class .= ' show-for-medium-up';
 }

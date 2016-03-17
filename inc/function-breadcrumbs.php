@@ -18,7 +18,7 @@ function gwt_wp_breadcrumb() {
 		if($option['govph_breadcrumbs_show_home'] == 'true'){
 			echo '<li>You are here:</li>';
 			echo '<li><a class="pathway" href="';
-			echo get_option('home');
+			echo home_url();
 			echo '">';
 			echo 'Home';
 			echo '</a></li>';
@@ -32,7 +32,7 @@ function gwt_wp_breadcrumb() {
 			echo '<ul class="breadcrumbs">';
 			echo '<li>You are here:</li>';
 			echo '<li><a class="pathway" href="';
-			echo get_option('home');
+			echo home_url();
 			echo '">';
 			echo 'Home';
 			echo '</a></li>';

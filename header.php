@@ -21,7 +21,7 @@
 
   <?php wp_head(); ?>
   
-  <style>
+  <style <?php the_tags(); ?>>
     .container-main a {
       <?php govph_displayoptions( 'govph_anchorcolor' ); ?>
     }
@@ -229,25 +229,21 @@ Press esc, or click the close the button to close this dialog box.
 </div>
 
 <?php
-  // create a dynamic column on ear content
-  $name_slogan_class = ' large-12';
+  $name_slogan_class = 'large-12 ';
   $ear_content_class = '';
   $ear_content_2_class = '';
-  // if both content are available
   if(is_active_sidebar('ear-content-1') && is_active_sidebar('ear-content-2')){
-    $name_slogan_class = ' large-6';
-    $ear_content_class = 'large-3';
-    $ear_content_2_class = 'large-3';
+    $name_slogan_class = 'large-6 ';
+    $ear_content_class = 'large-3 ';
+    $ear_content_2_class = 'large-3 ';
   }
   elseif(is_active_sidebar('ear-content-1') && !is_active_sidebar('ear-content-2')){
-    $name_slogan_class = ' large-9';
-    $ear_content_class = 'large-3';
-    //$ear_content_2_class = '';
+    $name_slogan_class = 'large-9 ';
+    $ear_content_class = 'large-3 ';
   }
   elseif(!is_active_sidebar('ear-content-1') && is_active_sidebar('ear-content-2')){
-    $name_slogan_class = ' large-9';
-    //$ear_content_class = '';
-    $ear_content_2_class = 'large-3';
+    $name_slogan_class = 'large-9 ';
+    $ear_content_2_class = 'large-3 ';
   }
 ?>
 

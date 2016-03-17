@@ -38,7 +38,7 @@ if(is_active_sidebar('footer-2')){
     $footer_class_4 = '';
   }
   elseif(!is_active_sidebar('footer-3') && !is_active_sidebar('footer-4')){
-    $footer_class_2 = ' large-3';
+    $footer_class_2 = ' large-6';
     $footer_class_3 = '';
     $footer_class_4 = '';
   }

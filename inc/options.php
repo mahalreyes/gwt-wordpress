@@ -23,7 +23,7 @@ class GOVPH
   {
   ?>
   <div class="wrap">
-    <?php screen_icon(); ?>
+    
     <h2>Theme Options Page</h2>
     <form action="options.php" method="post" enctype="multipart/form-data">
       <?php settings_fields('govph_options') ?>
@@ -38,9 +38,7 @@ class GOVPH
   <script type="text/javascript">
   jQuery(document).ready(function($){
 
-
       var custom_uploader;
-
 
       $('.my-color-field').wpColorPicker();
       $('form').find('input#upload_image_button').on('click', function(e){
@@ -155,7 +153,6 @@ class GOVPH
     add_settings_field('govph_sliderimage', 'Slider Background Image', array($this, 'govph_slider_image_setting'), __FILE__, 'govph_main_section');
     add_settings_field('govph_slider_fullwidth', 'Slider Full Width', array($this, 'govph_slider_fullwidth'), __FILE__, 'govph_main_section');
     add_settings_field('govph_anchorcolor', 'Anchor Color Settings', array($this, 'govph_anchor_color_setting'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_sidebar_position', 'Sidebar Settings', array($this, 'govph_sidebar_position'), __FILE__, 'govph_main_section');
     add_settings_field('govph_disable_search', 'Search Enable', array($this, 'govph_disable_search'), __FILE__, 'govph_main_section');
     
     // add govph_breadcrumbs separator and option
@@ -387,20 +384,6 @@ class GOVPH
   ?>
     <input type="checkbox" name="govph_options[govph_breadcrumbs_last_title]" value="true" <?php echo $true ?>>
     <span class="description">Append the content title to the end of the breadcrumb</span>
-  <?php
-  }
-
-  public function govph_sidebar_position()
-  {
-    $left = ($this->options['govph_sidebar_position'] == 'left' ? "checked" : "");
-    $right = ($this->options['govph_sidebar_position'] == 'right' ? "checked" : "");
-    $both = ($this->options['govph_sidebar_position'] == 'both' ? "checked" : "");
-    $fullwidth = ($this->options['govph_sidebar_position'] == 'fullwidth' ? "checked" : "");
-  ?>
-    <input type="radio" name="govph_options[govph_sidebar_position]" value="left" <?php echo $left ?>> Left <br>
-    <input type="radio" name="govph_options[govph_sidebar_position]" value="right" <?php echo $right ?>> Right <br>
-    <input type="radio" name="govph_options[govph_sidebar_position]" value="both" <?php echo $both ?>> Both <br>
-    <input type="radio" name="govph_options[govph_sidebar_position]" value="fullwidth" <?php echo $fullwidth ?>> Full Width
   <?php
   }
 
@@ -734,7 +717,7 @@ function govph_displayoptions( $options ){
       echo $addLogo;
       break;
     case 'govph_logo_position':
-      $logoPos = (!empty($option['govph_logo_position']) ? 'background-position:top '.$option['govph_logo_position'].';' : '');
+      $logoPos = (!empty($option['govph_logo_position']) ? 'text-align:'.$option['govph_logo_position'].';' : '');
       echo $logoPos;
       break;
     case 'govph_headercolor':

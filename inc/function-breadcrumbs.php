@@ -9,7 +9,7 @@ function gwt_wp_breadcrumb() {
 	if($option['govph_breadcrumbs_enable'] != 'true'){
 		return false;
 	}
-	$separator = $option['govph_breadcrumbs_separator'] ? $option['govph_breadcrumbs_separator'] : ' › ';
+	$separator = $option['govph_breadcrumbs_separator'] ? $option['govph_breadcrumbs_separator'] : ' / ';
 	$separator_block = '<span class="separator">'.$separator.'</span>';
 
 	
@@ -21,8 +21,7 @@ function gwt_wp_breadcrumb() {
 			echo home_url();
 			echo '">';
 			echo 'Home';
-			echo '</a></li>';
-			//echo '</a>'.$separator_block.'</li>';
+			echo '</a>'.$separator_block.'</li>';
 		} else {
 			echo '<li>You are here:</li>';
 		}
@@ -35,7 +34,7 @@ function gwt_wp_breadcrumb() {
 			echo home_url();
 			echo '">';
 			echo 'Home';
-			echo '</a></li>';
+			echo '</a>'.$separator_block.'</li>';
 		}
 	}
 
@@ -57,13 +56,12 @@ function gwt_wp_breadcrumb() {
 			$anc = get_post_ancestors( $post->ID );
 			$title = get_the_title();
 			foreach ( $anc as $ancestor ) {
-				$output = '<li><a class="pathway" href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li>';
+				$output = '<li><a class="pathway" href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a>'.$separator_block.'</li>';
 			}
 			echo $output;
-			echo '<li><span class="current">'.get_the_title().'</span></li>';
-			//echo '<strong title="'.$title.'"> '.$title.'</strong>';
+			echo '<li><span class="current show-for-sr">Current: </span>'.get_the_title().'</li>';
 		} else {
-			echo '<li><span class="current"> '.get_the_title().'</span></li>';
+			echo '<li><span class="current show-for-sr">Current: </span>'.get_the_title().'</li>';
 		}
 	}
   

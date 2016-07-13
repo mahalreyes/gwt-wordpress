@@ -4,7 +4,8 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package gwt_wp
+ * @package GWT
+ * @since Government Website Template 2.0
  */
 
 /**

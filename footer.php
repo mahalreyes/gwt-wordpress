@@ -1,13 +1,13 @@
 <?php
 /**
- * The template for displaying the footer.
+ * The template for displaying the footer
  *
  * Contains the closing of the id=main div and all content after
  *
- * @package gwt_wp
+ * @package GWT
+ * @since Government Website Template 2.0
  */
 ?>
-
 	</div><!-- #content -->
 </div><!-- #page -->
 
@@ -99,7 +99,6 @@ is_active_sidebar('footer-4')): ?>
   </div>
 </div>
 <?php endif; ?>
-<div id="darklight"></div>
 
 <!-- standard footer -->
 <div id="gwt-standard-footer"></div>
@@ -113,12 +112,30 @@ is_active_sidebar('footer-4')): ?>
 }(document, 'script', 'gwt-footer-jsdk'));
 </script>
 <!-- end standard footer -->
+
+<!-- philippine standard time -->
+<script type="text/javascript" id="gwt-pst">
+
+(function(d, eId) {
+	var js, gjs = d.getElementById(eId);
+	js = d.createElement('script'); js.id = 'gwt-pst-jsdk';
+	js.src = "//gwhs.i.gov.ph/pst/gwtpst.js?"+new Date().getTime();
+	gjs.parentNode.insertBefore(js, gjs);
+}(document, 'gwt-pst'));
+
+var gwtpstReady = function(){
+	var otherFormat = 'dddd, mmmm dd, yyyy, h:mm:ss TT';
+	var firstPst = new gwtpstTime('pst-time', {format: otherFormat});
+}
+</script>
+<!-- end philippine standard time -->
+
 <?php wp_footer(); ?>
 <script type="text/javascript">
-(function($) {
+	(function($) {
 	jQuery(document).foundation();
 })(jQuery);
 </script>
-<div><a href="#page" id="back-to-top" style="display: inline;">Back to Top</a></div>
+<div><a href="#page" id="back-to-top" style="display: inline;"><i class="fa fa-arrow-circle-up fa-2x"></i></a></div>
 </body>
 </html>

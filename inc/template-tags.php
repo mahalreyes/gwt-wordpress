@@ -31,7 +31,8 @@ function gwt_wp_content_nav( $nav_id ) {
 
 	?>
 	<nav role="navigation" id="<?php echo esc_attr( $nav_id ); ?>" class="<?php echo $nav_class; ?>">
-		<h4 class="screen-reader-text"><?php _e( 'Post navigation', 'gwt_wp' ); ?></h4>
+		<h4><?php _e( 'Post navigation', 'gwt_wp' ); ?></h4>
+		<label class="show-for-sr">Post navigation</label>
 
 	<?php if ( is_single() ) : // navigation links for single posts ?>
 
@@ -167,21 +168,11 @@ if ( ! function_exists( 'gwt_wp_posted_on' ) ) :
  */
 function gwt_wp_posted_on() {
 	$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
-	//if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) )
-		//$time_string .= '<time class="updated" datetime="%3$s">%4$s</time>';
 
-	/*$time_string = sprintf( $time_string,
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
-	);
-	*/
 	$time_string = sprintf( $time_string,
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( get_the_date() )
 	);
-
 
 	if(govph_displayoptions('govph_content_show_pub_date') == 'true'){
 		$default_publish_label = govph_displayoptions('govph_content_pub_date_lbl') ? govph_displayoptions('govph_content_pub_date_lbl') : 'Posted on';
@@ -192,6 +183,10 @@ function gwt_wp_posted_on() {
 			$default_publish_label
 		);
 	}
+
+	else
+		$published_date = "";
+
 	if(govph_displayoptions('govph_content_show_author') == 'true'){
 		$default_author_label = govph_displayoptions('govph_content_pub_author_lbl') ? govph_displayoptions('govph_content_pub_author_lbl') : ' by';
 		$author = sprintf( '%4$s <span class="author"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
@@ -201,6 +196,9 @@ function gwt_wp_posted_on() {
 			$default_author_label
 		);
 	}
+	else
+		$author = "";
+
 	printf( __( '<span class="posted-on">%1$s</span><span class="byline">%2$s</span>', 'gwt_wp' ),
 		$published_date,
 		$author
@@ -208,37 +206,3 @@ function gwt_wp_posted_on() {
 }
 endif;
 
-/**
- * Returns true if a blog has more than 1 category
- */
-function gwt_wp_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
-		// Create an array of all the categories that are attached to posts
-		$all_the_cool_cats = get_categories( array(
-			'hide_empty' => 1,
-		) );
-
-		// Count the number of categories that are attached to the posts
-		$all_the_cool_cats = count( $all_the_cool_cats );
-
-		set_transient( 'all_the_cool_cats', $all_the_cool_cats );
-	}
-
-	if ( '1' != $all_the_cool_cats ) {
-		// This blog has more than 1 category so gwt_wp_categorized_blog should return true
-		return true;
-	} else {
-		// This blog has only 1 category so gwt_wp_categorized_blog should return false
-		return false;
-	}
-}
-
-/**
- * Flush out the transients used in gwt_wp_categorized_blog
- */
-function gwt_wp_category_transient_flusher() {
-	// Like, beat it. Dig?
-	delete_transient( 'all_the_cool_cats' );
-}
-add_action( 'edit_category', 'gwt_wp_category_transient_flusher' );
-add_action( 'save_post',     'gwt_wp_category_transient_flusher' );

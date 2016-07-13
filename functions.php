@@ -11,7 +11,7 @@
 require get_template_directory() . '/inc/function-initialize.php';
 
 /**
- * Register widgetized area and update sidebar with default widgets
+ * Register widgetized area
  */
 require get_template_directory() . '/inc/function-widget.php';
 
@@ -31,14 +31,14 @@ require get_template_directory() . '/inc/function-excerpt.php';
 require get_template_directory() . '/inc/function-enqueue_scripts.php';
 
 /**
- * Default sidebar contents
- */
-require get_template_directory() . '/inc/function-sidebar.php';
-
-/**
  * Disable comment functions
  */
-require get_template_directory() . '/inc/disable-comments.php';
+require get_template_directory() . '/inc/function-disable_comments.php';
+
+/**
+ * Default sidebar contents
+ */
+require get_template_directory() . '/inc/sidebar.php';
 
 /**
  * Custom template tags for this theme.
@@ -53,35 +53,41 @@ require get_template_directory() . '/inc/extras.php';
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+// require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
  */
-require get_template_directory() . '/inc/jetpack.php';
+// require get_template_directory() . '/inc/jetpack.php';
 
 /**
  * Theme Options Page.
  */
-require get_template_directory() . '/inc/options.php';
+require get_template_directory() . '/inc/function-options.php';
 
 /**
  * Custom Post Types
  */
-require get_template_directory() . '/inc/custom-post-types.php';
+// require get_template_directory() . '/inc/custom-post-types.php';
 
 /**
- * Plugin Name: Envato FlexSlider
- * Plugin URI:
- * Description: A simple plugin that integrates FlexSlider (http://flex.madebymufffin.com/) with WordPress using custom post types!
- * Author: Joe Casabona
- * Version: 0.5
- * Author URI: http://www.casabona.org
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/template-tags.php';
+
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Envato Flexslider
  */
 require get_template_directory() . '/inc/vendors/envato-flex-slider/envato-flex-slider.php';
 
-// make clickable content
-apply_filters('the_content','make_clickable');
-
-// post thumbnails
-add_theme_support('post-thumbnails');
+/**
+ * GWT only works in WordPress 4.4 or later.
+ */
+if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
+	require get_template_directory() . '/inc/back-compat.php';
+}

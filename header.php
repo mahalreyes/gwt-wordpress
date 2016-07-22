@@ -184,12 +184,6 @@ Press esc, or click the close the button to close this dialog box.
 										</a>
 									</li>
 									<li>
-										<a href="#" id="accessibility-grayscale" title="Toggle Gray Scale" class="toggle-grayscale">
-											<span class="show-for-sr">Grayscale</span>
-											<i class="fa fa-adjust fa-2x"></i>
-										</a>
-									</li>
-									<li>
 										<a href="#" id="accessibility-skip-content" title="Skip to Content">
 											<span class="show-for-sr">Skip to Content</span>
 											<i class="fa fa-arrow-circle-o-down fa-2x"></i>

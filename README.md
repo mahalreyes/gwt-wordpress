@@ -12,7 +12,7 @@ For a list of known issues and RFEs, check the [issue tracking system](https://g
  - Tabbed Theme Options
 
 ## CHANGE LOGS
-**07/13/2016**
+**07/22/2016**
 - [Update] Foundation version 6.2.2
 - [Features] Philippine Standard Time (PST)
     - Font customization

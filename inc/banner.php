@@ -29,20 +29,24 @@ if(!is_home()){
 					<?php govph_displayoptions( 'govph_slider_start' ); ?>
 					<?php if (is_home()): ?>
 						<?php if($banner_slider = efs_get_slider()): ?>
-							<div class="<?php echo $banner_class ?>">
-								<?php echo $banner_slider ?>
-							</div>
+							<?php if(govph_displayoptions( 'govph_slider_full' ) == 'active'): ?>
+								<div id="banner-slider" class="large-12 show-for-large">
+							<?php else: ?>
+								<div id="banner-slider" class="<?php echo $banner_class ?>">
+							<?php endif; ?>
+									<?php echo $banner_slider ?>
+								</div>
 						<?php endif; ?>
 
 						<?php if(is_active_sidebar('banner-section-1')): ?>
-							<div class="<?php echo $banner_2_class ?> columns">
+							<div id="banner-section-1" class="<?php echo $banner_2_class ?> columns">
 								<?php do_action( 'before_sidebar' ); ?>
 								<?php dynamic_sidebar( 'banner-section-1' ) ?>
 							</div>
 						<?php endif; ?>
 
 						<?php if(is_active_sidebar('banner-section-2')): ?>
-							<div class="<?php echo $banner_3_class ?> columns">
+							<div id="banner-section-2" class="<?php echo $banner_3_class ?> columns">
 								<?php do_action( 'before_sidebar' ); ?>
 								<?php dynamic_sidebar( 'banner-section-2' ) ?>
 							</div>
@@ -54,23 +58,23 @@ if(!is_home()){
 
 					<?php else: ?>
 						<?php if (is_404()): ?>
-							<div class="container-main row">
-								<div class="large-9 columns">
+							<?php govph_displayoptions( 'govph_banner_title_start' ); ?>
+								<div class="large-9 columns container-main">
 									<header>
 										<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'gwt_wp' ); ?></h1>
 									</header>
 								</div>
-							</div>
+							<?php govph_displayoptions( 'govph_banner_title_end' ); ?>
 						<?php elseif (is_search()): ?>
-
-								<div class="container-main large-9 columns">
+							<?php govph_displayoptions( 'govph_banner_title_start' ); ?>
+								<div class="large-9 columns container-main">
 									<header>
 										<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'gwt_wp' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 									</header>
 								</div>
-							
+							<?php govph_displayoptions( 'govph_banner_title_end' ); ?>
 						<?php elseif (is_archive()): ?>
-							<div class="row">
+							<?php govph_displayoptions( 'govph_banner_title_start' ); ?>
 								<div class="large-9 columns container-main">
 									<header>
 										<h1 class="page-title">
@@ -109,10 +113,9 @@ if(!is_home()){
 										?>
 									</header>
 								</div>
-							</div>
-
+							<?php govph_displayoptions( 'govph_banner_title_end' ); ?>
 						<?php else: ?>
-				
+							<?php govph_displayoptions( 'govph_banner_title_start' ); ?>
 								<div class="large-9 columns container-main">
 									<header>
 										<?php while ( have_posts() ) : the_post(); ?>
@@ -120,8 +123,7 @@ if(!is_home()){
 										<?php endwhile; // end of the loop. ?>
 									</header>
 								</div>
-				
-						</div>
+							<?php govph_displayoptions( 'govph_banner_title_end' ); ?>
 						<?php endif ?>
 					<?php endif ?>
 

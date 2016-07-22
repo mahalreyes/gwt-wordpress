@@ -141,7 +141,9 @@ class GOVPH
   {
     register_setting('govph_options','govph_options');
     add_settings_section('govph_main_section', '', array($this, 'govph_main_section_cb'), __FILE__);
+    add_settings_field('govph_general_section', '<h3>General Options<h3>', array($this, 'govph_general_section'), __FILE__, 'govph_main_section');
     add_settings_field('govph_auxmenu', 'Auxiliary Menu', array($this, 'govph_auxmenu'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_disable_search', 'Search Enable', array($this, 'govph_disable_search'), __FILE__, 'govph_main_section');
     add_settings_field('govph_logo_enable', 'Enable Image Logo', array($this, 'govph_logo_enable'), __FILE__, 'govph_main_section');
     add_settings_field('govph_agency_name', 'Agency Name', array($this, 'govph_agency_name'), __FILE__, 'govph_main_section');
     add_settings_field('govph_agency_tagline', 'Agency Tagline', array($this, 'govph_agency_tagline'), __FILE__, 'govph_main_section');
@@ -153,36 +155,16 @@ class GOVPH
     add_settings_field('govph_slidercolor', 'Slider Background Color', array($this, 'govph_slider_color_setting'), __FILE__, 'govph_main_section');
     add_settings_field('govph_sliderimage', 'Slider Background Image', array($this, 'govph_slider_image_setting'), __FILE__, 'govph_main_section');
     add_settings_field('govph_slider_fullwidth', 'Slider Full Width', array($this, 'govph_slider_fullwidth'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_anchorcolor', 'Anchor Color Settings', array($this, 'govph_anchor_color_setting'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_disable_search', 'Search Enable', array($this, 'govph_disable_search'), __FILE__, 'govph_main_section');
     
     // add govph_breadcrumbs separator and option
     add_settings_field('govph_breadcrumbs_enable', 'Enable Breadcrumbs', array($this, 'govph_breadcrumbs_enable'), __FILE__, 'govph_main_section');
     add_settings_field('govph_breadcrumbs_separator', 'Breadcrumbs Separator', array($this, 'govph_breadcrumbs_separator'), __FILE__, 'govph_main_section');
     add_settings_field('govph_breadcrumbs_show_home', 'Breadcrumb Homepage Link', array($this, 'govph_breadcrumbs_show_home'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_breadcrumbs_last_separator', 'Append a separator in last breadcrumb', array($this, 'govph_breadcrumbs_last_separator'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_breadcrumbs_last_title', 'Append content title as last breadcrumb item', array($this, 'govph_breadcrumbs_last_title'), __FILE__, 'govph_main_section');
 
-    // accessibility links
-    add_settings_field('govph_acc_link_section', '<h3>Accessibility Links<h3>', array($this, 'govph_acc_link_section'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_acc_link_statement', 'Accessibility Statement<br/>(Combination + 0)', array($this, 'govph_acc_link_statement'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_acc_link_home', 'Home Page<br/>(Combination + 1)', array($this, 'govph_acc_link_home'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_acc_link_main_content', 'Main Content<br/>(Combination + R)', array($this, 'govph_acc_link_main_content'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_acc_link_contact', 'Contact<br/>(Combination + C)', array($this, 'govph_acc_link_contact'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_acc_link_feedback', 'Feedback<br/>(Combination + K)', array($this, 'govph_acc_link_feedback'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_acc_link_sitemap', 'Site Map<br/>(Combination + M)', array($this, 'govph_acc_link_sitemap'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_acc_link_search', 'Search<br/>(Combination + S)', array($this, 'govph_acc_link_search'), __FILE__, 'govph_main_section');
-
-    // publishing options
-    add_settings_field('govph_content_section', '<h3>Pubishing Options<h3>', array($this, 'govph_content_section'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_content_show_pub_date', 'Show Published Date', array($this, 'govph_content_show_pub_date'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_content_pub_date_lbl', 'Publish Date Label', array($this, 'govph_content_pub_date_lbl'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_content_show_author', 'Show Publisher', array($this, 'govph_content_show_author'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_content_pub_author_lbl', 'Publish Author Label', array($this, 'govph_content_pub_author_lbl'), __FILE__, 'govph_main_section');
-    
     // custom styling
     add_settings_field('govph_custom_styling', '<h3>Theme Styling<h3>', array($this, 'govph_custom_styling'), __FILE__, 'govph_main_section');
     add_settings_field('govph_custom_pst', 'Philippine Standard Time', array($this, 'govph_custom_pst'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_anchorcolor', 'Anchor Color Settings', array($this, 'govph_anchor_color_setting'), __FILE__, 'govph_main_section');
     add_settings_field('govph_custom_panel_top', 'Panel Top Color', array($this, 'govph_custom_panel_top'), __FILE__, 'govph_main_section');
     add_settings_field('govph_custom_panel_bottom', 'Panel Bottom Color', array($this, 'govph_custom_panel_bottom'), __FILE__, 'govph_main_section');
     add_settings_field('govph_custom_border_width', 'Border Width', array($this, 'govph_custom_border_width'), __FILE__, 'govph_main_section');
@@ -190,9 +172,28 @@ class GOVPH
     add_settings_field('govph_custom_border_color', 'Border Color', array($this, 'govph_custom_border_color'), __FILE__, 'govph_main_section');
     add_settings_field('govph_custom_background_color', 'Background Color', array($this, 'govph_custom_background_color'), __FILE__, 'govph_main_section');
     add_settings_field('govph_custom_headings_text', 'Header Rendering', array($this, 'govph_custom_headings_text'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_custom_headings_size', 'Header Font Size', array($this, 'govph_custom_headings_size'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_custom_headings_inner_page_size', 'Header Inner Post Font Size', array($this, 'govph_custom_headings_inner_page_size'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_custom_headings_size', 'Blog Title Header', array($this, 'govph_custom_headings_size'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_custom_headings_inner_page_size', 'Banner Title Header', array($this, 'govph_custom_headings_inner_page_size'), __FILE__, 'govph_main_section');
     add_settings_field('govph_custom_footer_background_color', 'Agency Footer Color', array($this, 'govph_custom_footer_background_color'), __FILE__, 'govph_main_section');
+
+    // publishing options
+    add_settings_field('govph_content_section', '<h3>Publishing Options<h3>', array($this, 'govph_content_section'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_content_show_pub_date', 'Show Published Date', array($this, 'govph_content_show_pub_date'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_content_pub_date_lbl', 'Publish Date Label', array($this, 'govph_content_pub_date_lbl'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_content_show_author', 'Show Publisher', array($this, 'govph_content_show_author'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_content_pub_author_lbl', 'Publish Author Label', array($this, 'govph_content_pub_author_lbl'), __FILE__, 'govph_main_section');
+
+    // accessibility links
+    add_settings_field('govph_acc_link_section', '<h3>Accessibility<h3>', array($this, 'govph_acc_link_section'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_acc_link_keys', 'Accessibility Combination Keys', array($this, 'govph_acc_link_keys'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_acc_link_statement', 'Accessibility Statement<br/>(Combination + 0)', array($this, 'govph_acc_link_statement'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_acc_link_home', 'Home Page<br/>(Combination + H)', array($this, 'govph_acc_link_home'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_acc_link_main_content', 'Main Content<br/>(Combination + R)', array($this, 'govph_acc_link_main_content'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_acc_link_contact', 'Contact<br/>(Combination + C)', array($this, 'govph_acc_link_contact'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_acc_link_feedback', 'Feedback<br/>(Combination + K)', array($this, 'govph_acc_link_feedback'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_acc_link_faq', 'FAQ<br/>(Combination + Q)', array($this, 'govph_acc_link_faq'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_acc_link_sitemap', 'Site Map<br/>(Combination + M)', array($this, 'govph_acc_link_sitemap'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_acc_link_search', 'Search<br/>(Combination + S)', array($this, 'govph_acc_link_search'), __FILE__, 'govph_main_section');
 
   }
 
@@ -202,13 +203,30 @@ class GOVPH
    * Inputs
    */
 
-  // Main Section
+  /*
+   * General Options Section
+   */
+  public function govph_general_section(){
+  ?>
+    <hr/>
+  <?php
+  }
+
   public function govph_auxmenu()
   {
     $true = ($this->options['govph_auxmenu'] == 'true' ? "checked" : "");
   ?>
     <input type="checkbox" name="govph_options[govph_auxmenu]" value="true" <?php echo $true ?>>
     <span class="description">Check to display Auxiliary Menu</span>
+  <?php
+  }
+
+  public function govph_disable_search()
+  {
+    $true = ($this->options['govph_disable_search'] == 'true' ? "checked" : "");
+  ?>
+    <input type="checkbox" name="govph_options[govph_disable_search]" value="true" <?php echo $true ?>>
+    <span class="description">Check to display search field</span>
   <?php
   }
 
@@ -219,6 +237,7 @@ class GOVPH
   ?>
     <input type="radio" name="govph_options[govph_logo_position]" value="left" <?php echo $left ?>> Left <br>
     <input type="radio" name="govph_options[govph_logo_position]" value="center" <?php echo $center ?>> Center
+    <br/><span class="description">Set position for logo</span>
   <?php
   }
 
@@ -228,7 +247,7 @@ class GOVPH
     <label for="upload_image">
       <input id="upload_image" type="text" size="36" name="govph_options[govph_logo]" value="<?php echo $this->options['govph_logo']; ?>" />
       <input id="upload_image_button" class="button" type="button" value="Upload Logo" />
-      <br/><p class="description">Enter a URL or upload an image</p>
+      <br/><span class="description">Enter a URL or upload an image</span>
     </label>
 
   <?php
@@ -246,7 +265,7 @@ class GOVPH
     <label for="logo_enabled">
       <input type="radio" name="govph_options[govph_logo_enable]" id="govph_logo_enable" value="1" <?php echo $enabled ?>> <label for="govph_logo_enable">Enable</label> <br>
       <input type="radio" name="govph_options[govph_logo_enable]" id="govph_logo_disable" value="0" <?php echo $disabled ?>> <label for="govph_logo_disable">Disable</label>
-      <br/><p class="description">If enabled, the website name will be hidden and image logo will be shown (if exists).</p>
+      <br/><span class="description">If enabled, the website name will be hidden and image logo will be shown (if exists).</span>
     </label>
   <?php
   }
@@ -256,7 +275,7 @@ class GOVPH
     $value = $this->options['govph_agency_name'] ? $this->options['govph_agency_name'] : '';
   ?>
     <input type="text" name="govph_options[govph_agency_name]" value="<?php echo $value ?>" style="width: 400px;"><br/>
-    <p class="description">The agency website name.</p>
+    <span class="description">The agency website name.</span>
   <?php
   }
 
@@ -265,7 +284,7 @@ class GOVPH
     $value = $this->options['govph_agency_tagline'] ? $this->options['govph_agency_tagline'] : '';
   ?>
     <input type="text" name="govph_options[govph_agency_tagline]" value="<?php echo $value ?>" style="width: 400px;"><br/>
-    <p class="description">The agency tagline.</p>
+    <span class="description">The agency tagline.</span>
   <?php
   }
 
@@ -290,7 +309,7 @@ class GOVPH
     <label for="header_image_background">
       <input id="header_image_background" type="text" size="36" name="govph_options[govph_headerimage]" value="<?php echo $this->options['govph_headerimage']; ?>" />
       <input id="header_image_background_button" class="button" type="button" value="Upload Image" />
-      <br /><p class="description">Enter a URL or upload an image for header background</p>
+      <br /><span class="description">Enter a URL or upload an image for header background.</span>
     </label>
   <?php
     if (!empty($this->options['govph_headerimage'])) {
@@ -311,7 +330,7 @@ class GOVPH
     <label for="slider_image_background">
       <input id="slider_image_background" type="text" size="36" name="govph_options[govph_sliderimage]" value="<?php echo $this->options['govph_sliderimage']; ?>" />
       <input id="slider_image_background_button" class="button" type="button" value="Upload Image" />
-      <br/><p class="description">Enter a URL or upload an image for header background</p>
+      <br/><span class="description">Enter a URL or upload an image for header background</span>
     </label>
   <?php
     if (!empty($this->options['govph_sliderimage'])) {
@@ -325,24 +344,6 @@ class GOVPH
   ?>
     <input type="checkbox" name="govph_options[govph_slider_fullwidth]" value="true" <?php echo $true ?>>
     <span class="description">Check to display the slider in full width</span>
-  <?php
-  }
-
-
-  public function govph_anchor_color_setting()
-  {
-  ?>
-    <input name="govph_options[govph_anchorcolor]" type="text" value="<?php echo $this->options['govph_anchorcolor']; ?>" class="my-color-field" data-default-color="#2795b6" />
-  <?php
-  }
-
-
-  public function govph_disable_search()
-  {
-    $true = ($this->options['govph_disable_search'] == 'true' ? "checked" : "");
-  ?>
-    <input type="checkbox" name="govph_options[govph_disable_search]" value="true" <?php echo $true ?>>
-    <span class="description">Check to display search field</span>
   <?php
   }
 
@@ -373,152 +374,8 @@ class GOVPH
   <?php
   }
 
-  public function govph_breadcrumbs_last_separator()
-  {
-    $true = ($this->options['govph_breadcrumbs_last_separator'] == 'true' ? "checked" : "");
-  ?>
-    <input type="checkbox" name="govph_options[govph_breadcrumbs_last_separator]" value="true" <?php echo $true ?>>
-    <span class="description">Append a separator to the end of the breadcrumb</span>
-  <?php
-  }
-
-  public function govph_breadcrumbs_last_title()
-  {
-    $true = ($this->options['govph_breadcrumbs_last_title'] == 'true' ? "checked" : "");
-  ?>
-    <input type="checkbox" name="govph_options[govph_breadcrumbs_last_title]" value="true" <?php echo $true ?>>
-    <span class="description">Append the content title to the end of the breadcrumb</span>
-  <?php
-  }
-
   /**
-   * accessibility theme option
-   */
-  public function govph_acc_link_section(){
-  ?>
-    <hr/>
-    <label>Shortcut Keys Combination Activation</label>
-    <p>Combination keys used for each browser.</p>
-    <ul>
-      <li>Chrome for Linux press (Alt+Shift+shortcut_key)</li>
-      <li>Chrome for Windows press (Alt+shortcut_key)</li>
-      <li>For Firefox press (Alt+Shift+shortcut_key)</li>
-      <li>For Internet Explorer press (Alt+Shift+shortcut_key) then press (enter)</li>
-    </ul>
-  <?php
-  }
-
-  public function govph_acc_link_statement()
-  {
-    $value = $this->options['govph_acc_link_statement'] ? $this->options['govph_acc_link_statement'] : '';
-  ?>
-    <span class="field-prefix"><?php echo get_site_url(); ?>/ </span>
-    <input type="text" name="govph_options[govph_acc_link_statement]" value="<?php echo $value ?>"><br/>
-    <span class="description">Statement accessibility page</span>
-  <?php
-  }
-
-  public function govph_acc_link_home()
-  {
-    $value = $this->options['govph_acc_link_home'] ? $this->options['govph_acc_link_home'] : '';
-  ?>
-    <span class="field-prefix"><?php echo get_site_url(); ?>/ </span>
-    <input type="text" name="govph_options[govph_acc_link_home]" value="<?php echo $value ?>"><br/>
-    <span class="description">The home page of the website<br/>Default: blank</span>
-  <?php
-  }
-
-  public function govph_acc_link_main_content()
-  {
-    $value = $this->options['govph_acc_link_main_content'] ? $this->options['govph_acc_link_main_content'] : '#main-content';
-  ?>
-    <span class="field-prefix">{current_url}/ </span>
-    <input type="text" name="govph_options[govph_acc_link_main_content]" value="<?php echo $value ?>"><br/>
-    <span class="description">Default: #main-content</span>
-  <?php
-  }
-
-  public function govph_acc_link_contact()
-  {
-  ?>
-    <span class="field-prefix"><?php echo get_site_url(); ?>/ </span>
-    <input type="text" name="govph_options[govph_acc_link_contact]" value="<?php echo $this->options['govph_acc_link_contact'] ?>">
-  <?php
-  }
-
-  public function govph_acc_link_feedback()
-  {
-  ?>
-    <span class="field-prefix"><?php echo get_site_url(); ?>/ </span>
-    <input type="text" name="govph_options[govph_acc_link_feedback]" value="<?php echo $this->options['govph_acc_link_feedback'] ?>">
-  <?php
-  }
-
-  public function govph_acc_link_sitemap()
-  {
-    $value = $this->options['govph_acc_link_sitemap'] ? $this->options['govph_acc_link_sitemap'] : '#footer';
-  ?>
-    <span class="field-prefix">{current_url}/ </span>
-    <input type="text" name="govph_options[govph_acc_link_sitemap]" value="<?php echo $this->options['govph_acc_link_sitemap'] ?>"><br/>
-    <span class="description">Note: If the sitemap is a page, use the full URL of the website: <?php echo get_site_url(); ?>/{sitemap_page}<br/>
-      Default: #footer</span>
-  <?php
-  }
-
-  public function govph_acc_link_search()
-  {
-  ?>
-    <span class="field-prefix"><?php echo get_site_url(); ?>/ </span>
-    <input type="text" name="govph_options[govph_acc_link_search]" value="<?php echo $this->options['govph_acc_link_search'] ?>"><br/>
-    <span class="description">Note: Create a new page by going to "Pages" and selecting "Add New." Title the page "Search," and choose "Search Page" on Page Attributes from the Template drop-down menu. Click "Publish."<br/>
-      The link will be coming from the created page's permalink.
-    </span>
-  <?php
-  }
-
-  /**
-   * publishing options
-   */
-  public function govph_content_section(){
-  ?>
-    <hr></hr>
-  <?php
-  }
-
-  public function govph_content_show_pub_date(){
-    $true = ($this->options['govph_content_show_pub_date'] == 'true' || !empty($this->options['govph_content_show_pub_date']) ? "checked" : "");
-  ?>
-    <input type="checkbox" name="govph_options[govph_content_show_pub_date]" value="true" <?php echo $true ?>>
-    <span class="description">Check to display the published date on posts</span>
-  <?php
-  }
-
-  public function govph_content_pub_date_lbl(){
-    $default = !empty($this->options['govph_content_pub_date_lbl']) ? $this->options['govph_content_pub_date_lbl'] : 'Posted on';
-  ?>
-    <input type="text" name="govph_options[govph_content_pub_date_lbl]" value="<?php echo $default ?>"><br/>
-    <span class="description">Publish date display label</span>
-  <?php
-  }
-
-  public function govph_content_show_author(){
-    $true = ($this->options['govph_content_show_author'] == 'true' ? "checked" : "");
-  ?>
-    <input type="checkbox" name="govph_options[govph_content_show_author]" value="true" <?php echo $true ?>>
-    <span class="description">Check to display the author</span>
-  <?php
-  }
-
-  public function govph_content_pub_author_lbl(){
-    $default = !empty($this->options['govph_content_pub_author_lbl']) ? $this->options['govph_content_pub_author_lbl'] : '&nbsp;by';
-  ?>
-    <input type="text" name="govph_options[govph_content_pub_author_lbl]" value="<?php echo $default ?>"><br/>
-    <span class="description">Publish author display label<br/>Note: Add a space at the start to add spacing after the date</span>
-  <?php
-  }
-
-  /**
-   * custom styling
+   * Theme styling
    */
   public function govph_custom_styling(){
   ?>
@@ -532,6 +389,14 @@ class GOVPH
   ?>
     <input name="govph_options[govph_custom_pst]" type="text" value="<?php echo $this->options['govph_custom_pst']; ?>" class="my-color-field" data-default-color="#000000" />
     <br><span class="description">Philippine Standard Time (PST) font customization</span>
+  <?php
+  }
+
+  public function govph_anchor_color_setting()
+  {
+  ?>
+    <input name="govph_options[govph_anchorcolor]" type="text" value="<?php echo $this->options['govph_anchorcolor']; ?>" class="my-color-field" data-default-color="#2795b6" />
+    <br><span class="description">Change active links font color</span>
   <?php
   }
 
@@ -633,9 +498,9 @@ class GOVPH
     <select name="govph_options[govph_custom_headings_text]">
       <option value="">-- Select --</option>
       <option value="none" <?php echo $nl ?>>normal</option>
-      <option value="uppercase" <?php echo $caps ?>>all caps</option>
+      <option value="uppercase" <?php echo $caps ?>>uppercase</option>
     </select>
-    <br><span class="description">Header text rendering</span>
+    <br><span class="description">Blog section title text rendering</span>
   <?php
   }
 
@@ -651,7 +516,7 @@ class GOVPH
       <option value="1" <?php echo $nl ?>>normal</option>
       <option value="1.6" <?php echo $lr ?>>large</option>
     </select>
-    <br><span class="description">Adjust default header font size</span>
+    <br><span class="description">Adjust blog section title font sizes</span>
   <?php
   }
 
@@ -667,7 +532,7 @@ class GOVPH
       <option value="2.69" <?php echo $nl ?>>normal</option>
       <option value="3.5" <?php echo $lr ?>>large</option>
     </select>
-    <br><span class="description">Adjust inner post header font size</span>
+    <br><span class="description">Adjust inner posts and pages title font sizes</span>
   <?php
   }
 
@@ -677,6 +542,145 @@ class GOVPH
   ?>
     <input name="govph_options[govph_custom_footer_background_color]" type="text" value="<?php echo $this->options['govph_custom_footer_background_color']; ?>" class="my-color-field" data-default-color="#E9E9E9" />
     <br><span class="description">Background color for agency footer section</span>
+  <?php
+  }
+
+  /**
+   * publishing options
+   */
+  public function govph_content_section(){
+  ?>
+    <hr></hr>
+  <?php
+  }
+
+  public function govph_content_show_pub_date(){
+    $true = ($this->options['govph_content_show_pub_date'] == 'true' || !empty($this->options['govph_content_show_pub_date']) ? "checked" : "");
+  ?>
+    <input type="checkbox" name="govph_options[govph_content_show_pub_date]" value="true" <?php echo $true ?>>
+    <span class="description">Check to display the published date on posts</span>
+  <?php
+  }
+
+  public function govph_content_pub_date_lbl(){
+    $default = !empty($this->options['govph_content_pub_date_lbl']) ? $this->options['govph_content_pub_date_lbl'] : 'Posted on';
+  ?>
+    <input type="text" name="govph_options[govph_content_pub_date_lbl]" value="<?php echo $default ?>"><br/>
+    <span class="description">Publish date display label</span>
+  <?php
+  }
+
+  public function govph_content_show_author(){
+    $true = ($this->options['govph_content_show_author'] == 'true' ? "checked" : "");
+  ?>
+    <input type="checkbox" name="govph_options[govph_content_show_author]" value="true" <?php echo $true ?>>
+    <span class="description">Check to display the author</span>
+  <?php
+  }
+
+  public function govph_content_pub_author_lbl(){
+    $default = !empty($this->options['govph_content_pub_author_lbl']) ? $this->options['govph_content_pub_author_lbl'] : '&nbsp;by';
+  ?>
+    <input type="text" name="govph_options[govph_content_pub_author_lbl]" value="<?php echo $default ?>"><br/>
+    <span class="description">Publish author display label<br/>Note: Add a space at the start to add spacing after the date</span>
+  <?php
+  }
+
+  /**
+   * accessibility options
+   */
+  public function govph_acc_link_section(){
+  ?>
+    <hr/>
+  <?php
+  }
+
+  public function govph_acc_link_keys(){
+  ?>
+    <p>Shortcut Keys Combination Activation<br/>
+    Combination keys used for each browser.</p>
+    <ul>
+      <li>Chrome for Linux press (Alt+Shift+shortcut_key)</li>
+      <li>Chrome for Windows press (Alt+shortcut_key)</li>
+      <li>For Firefox press (Alt+Shift+shortcut_key)</li>
+      <li>For Internet Explorer press (Alt+Shift+shortcut_key) then press (enter)</li>
+    </ul>
+  <?php
+  }
+
+  public function govph_acc_link_statement()
+  {
+    $value = $this->options['govph_acc_link_statement'] ? $this->options['govph_acc_link_statement'] : '';
+  ?>
+    <span class="field-prefix"><?php echo get_site_url(); ?>/ </span>
+    <input type="text" name="govph_options[govph_acc_link_statement]" value="<?php echo $value ?>"><br/>
+    <span class="description">Statement accessibility page</span>
+  <?php
+  }
+
+  public function govph_acc_link_home()
+  {
+    $value = $this->options['govph_acc_link_home'] ? $this->options['govph_acc_link_home'] : '';
+  ?>
+    <span class="field-prefix"><?php echo get_site_url(); ?>/ </span>
+    <input type="text" name="govph_options[govph_acc_link_home]" value="<?php echo $value ?>"><br/>
+    <span class="description">The home page of the website<br/>Default: blank</span>
+  <?php
+  }
+
+  public function govph_acc_link_main_content()
+  {
+    $value = $this->options['govph_acc_link_main_content'] ? $this->options['govph_acc_link_main_content'] : '#main-content';
+  ?>
+    <span class="field-prefix">{current_url}/ </span>
+    <input type="text" name="govph_options[govph_acc_link_main_content]" value="<?php echo $value ?>"><br/>
+    <span class="description">Default: #main-content</span>
+  <?php
+  }
+
+  public function govph_acc_link_contact()
+  {
+  ?>
+    <span class="field-prefix"><?php echo get_site_url(); ?>/ </span>
+    <input type="text" name="govph_options[govph_acc_link_contact]" value="<?php echo $this->options['govph_acc_link_contact'] ?>">
+  <?php
+  }
+
+  public function govph_acc_link_feedback()
+  {
+  ?>
+    <span class="field-prefix"><?php echo get_site_url(); ?>/ </span>
+    <input type="text" name="govph_options[govph_acc_link_feedback]" value="<?php echo $this->options['govph_acc_link_feedback'] ?>">
+  <?php
+  }
+
+  public function govph_acc_link_faq()
+  {
+  ?>
+    <span class="field-prefix"><?php echo get_site_url(); ?>/ </span>
+    <input type="text" name="govph_options[govph_acc_link_faq]" value="<?php echo $this->options['govph_acc_link_faq'] ?>">
+  <?php
+  }
+
+  public function govph_acc_link_sitemap()
+  {
+    $value = $this->options['govph_acc_link_sitemap'] ? $this->options['govph_acc_link_sitemap'] : '#gwt-standard-footer';
+  ?>
+    <span class="field-prefix">{current_url}/ </span>
+    <input type="text" name="govph_options[govph_acc_link_sitemap]" value="<?php echo $value ?>"><br/>
+    <span class="description">Note: If the sitemap is a page, use the full URL of the website: <?php echo get_site_url(); ?>/{sitemap_page}<br/>
+      Default: #gwt-standard-footer</span>
+  <?php
+  }
+
+  public function govph_acc_link_search()
+  {
+  ?>
+    <span class="field-prefix"><?php echo get_site_url(); ?>/ </span>
+    <input type="text" name="govph_options[govph_acc_link_search]" value="<?php echo $this->options['govph_acc_link_search'] ?>"><br/>
+    <span class="description">Note: Create a new page by going to "Pages" and selecting "Add New." Title the page "Search," and choose "Search Page" on Page Attributes from the Template drop-down menu. Click "Publish."<br/>
+      The link will be coming from the created page's permalink.
+    </span>
   <?php
   }
 }
@@ -709,7 +713,7 @@ function govph_displayoptions( $options ){
         // TODO: add template for aux menu
       ?>
 
-			<div id="auxiliary" class="container-topbar show-for-large">
+			<div id="auxiliary" class="show-for-large">
 				<div class="row">
 					<div class="small-12 large-12 columns toplayer">
 						<nav id="aux-main" class="nomargin show-for-medium-up" data-dropdown-content>
@@ -727,9 +731,10 @@ function govph_displayoptions( $options ){
     case 'govph_logo_enable':
       return (!empty($option['govph_logo_enable']) && $option['govph_logo_enable'] == 1);
       break;
-    case 'govph_header_font_color':
-      $header_font_color = (!empty($option['govph_header_font_color']) ? 'color:'.$option['govph_header_font_color'].';' : '');
-      echo $header_font_color;
+    case 'govph_logo_setting':
+      $logoSetting = (!empty($option['govph_header_font_color']) ? 'color:'.$option['govph_header_font_color'].';' : '');
+      $logoSetting .= (!empty($option['govph_logo_position']) ? 'text-align:'.$option['govph_logo_position'].';' : '');
+      echo $logoSetting;
       break;
     case 'govph_logo':
       $logo_image = (!empty($option['govph_logo']) ? $option['govph_logo'] : get_template_directory_uri().'/images/logo-masthead-large.png');
@@ -744,25 +749,19 @@ function govph_displayoptions( $options ){
        </div>' ;
       echo $addLogo;
       break;
-    case 'govph_logo_position':
-      $logoPos = (!empty($option['govph_logo_position']) ? 'text-align:'.$option['govph_logo_position'].';' : '');
-      echo $logoPos;
+    case 'govph_header_setting':
+      $headerSetting = (!empty($option['govph_headercolor']) ? 'background-color:'.$option['govph_headercolor'].';' : '');
+      $headerSetting .= (!empty($option['govph_headerimage']) ? 'background-image:url("'.$option['govph_headerimage'].'");' : '');
+      echo $headerSetting;
       break;
-    case 'govph_headercolor':
-      $headerBg = (!empty($option['govph_headercolor']) ? 'background-color:'.$option['govph_headercolor'].';' : '');
-      echo $headerBg;
-      break;
-    case 'govph_headerimage':
-      $headerImg = (!empty($option['govph_headerimage']) ? 'background-image:url("'.$option['govph_headerimage'].'");' : '');
-      echo $headerImg;
-      break;
-    case 'govph_slidercolor':
-      $sliderBg = (!empty($option['govph_slidercolor']) ? 'background-color:'.$option['govph_slidercolor'].';' : '');
-      echo $sliderBg;
-      break;
-    case 'govph_sliderimage':
-      $sliderImg = (!empty($option['govph_sliderimage']) ? 'background-image:url("'.$option['govph_sliderimage'].'");background-size:cover;' : '');
-      echo $sliderImg;
+    
+    case 'govph_slider_setting':
+      $sliderSetting = (!empty($option['govph_sliderimage']) ? 'background-image:url("'.$option['govph_sliderimage'].'");background-size:cover;' : '');
+      $sliderSetting .= (!empty($option['govph_slidercolor']) ? 'background-color:'.$option['govph_slidercolor'].';' : '');
+      if ($option['govph_slider_fullwidth'] == 'true') {
+        $sliderSetting .= 'padding: 0;';
+      }
+      echo $sliderSetting;
       break;
     case 'govph_anchorcolor':
       $anchorColor = (!empty($option['govph_anchorcolor']) ? 'color:'.$option['govph_anchorcolor'].' !important;' : '');
@@ -1038,19 +1037,53 @@ function govph_displayoptions( $options ){
       $links .= '<li><a href="">Skip to Main Content</a></li>';
       $links .= '</ul>';
       break;
-    case 'govph_slider_start':
-      if ($option['govph_slider_fullwidth'] != 'true') {
-        echo '<div class="row">';
+    case 'govph_slider_full':
+      if ($option['govph_slider_fullwidth'] == 'true') {
+        $val = 'active';
+        return $val;
       }
-      elseif ($option['govph_slider_fullwidth'] != 'true' && is_active_sidebar('banner-section-1') || is_active_sidebar('banner-section-2')) {
+      break;
+    case 'govph_slider_start':
+      if ($option['govph_slider_fullwidth'] == 'true') {
+        echo '';
+      }
+      elseif ($option['govph_slider_fullwidth'] != 'true' || is_active_sidebar('banner-section-1') || is_active_sidebar('banner-section-2')) {
         echo '<div class="row">';
       }
       break;
     case 'govph_slider_end':
-      if ($option['govph_slider_fullwidth'] != 'true') {
-        echo '</div></div>';
+      if ($option['govph_slider_fullwidth'] == 'true') {
+        echo '';
+      }
+      elseif ($option['govph_slider_fullwidth'] != 'true' || is_active_sidebar('banner-section-1') || is_active_sidebar('banner-section-2')) {
+        echo '</div>';
       }
       break;
+    case 'govph_banner_title_start':
+      if ($option['govph_slider_fullwidth'] == 'true' && is_active_sidebar('banner-section-1') || is_active_sidebar('banner-section-2')) {
+        echo '';
+      }
+      elseif ($option['govph_slider_fullwidth'] == 'true') {
+        echo '<div class="row">';
+      }
+      break;
+    case 'govph_banner_title_end':
+      if ($option['govph_slider_fullwidth'] == 'true' &&  is_active_sidebar('banner-section-1') || is_active_sidebar('banner-section-2')) {
+        echo '';
+      } 
+      elseif ($option['govph_slider_fullwidth'] == 'true') {
+        echo '</div>';
+      }
+      break;
+    case 'govph_slider_fullwidth':
+      if ($option['govph_slider_fullwidth'] != 'true') {
+        echo 'display: block;';
+      }
+      else {
+        echo 'display: none;';
+      }
+
+    break;
     case 'govph_acc_link_statement':
       if(!empty($option['govph_acc_link_statement'])){
         $value = '';
@@ -1068,10 +1101,18 @@ function govph_displayoptions( $options ){
       }
       break;
     case 'govph_acc_link_feedback':
-      if(!empty($option['govph_acc_link_statement'])){
+      if(!empty($option['govph_acc_link_feedback'])){
         $value = '';
         $value .= get_site_url().'/'; 
         $value .= $option['govph_acc_link_feedback'];
+        return $value;
+      }
+      break;
+    case 'govph_acc_link_faq':
+      if(!empty($option['govph_acc_link_faq'])){
+        $value = '';
+        $value .= get_site_url().'/'; 
+        $value .= $option['govph_acc_link_faq'];
         return $value;
       }
       break;
@@ -1096,8 +1137,8 @@ function govph_displayoptions( $options ){
       break;
     case 'govph_acc_link_sitemap':
       $value = '';
-      $value = isset($option['govph_acc_link_sitemap']) ? $option['govph_acc_link_sitemap'] : '#footer';
-      echo $value;
+      $value .= isset($option['govph_acc_link_sitemap']) ? $option['govph_acc_link_sitemap'] : '#gwt-standard-footer';
+      return $value;
       break;
     case 'govph_content_show_pub_date':
       return isset($option['govph_content_show_pub_date']) ? $option['govph_content_show_pub_date'] : '';
@@ -1123,33 +1164,22 @@ function govph_displayoptions( $options ){
       $bg = (!empty($option['govph_custom_panel_bottom']) ? 'background-color:'.$option['govph_custom_panel_bottom'].';' : '');
       echo $bg;
     break;
-    case 'govph_custom_border_width':
-      $border = (!empty($option['govph_custom_border_width']) ? 'border-width:'.$option['govph_custom_border_width'].'px ;' : '');
-      echo $border;
+    case 'govph_widget_setting':
+      $widgetSetting = (!empty($option['govph_custom_border_width']) ? 'border-width:'.$option['govph_custom_border_width'].'px ;' : '');
+      $widgetSetting .= (!empty($option['govph_custom_border_radius']) ? 'border-radius:'.$option['govph_custom_border_radius'].'px ;' : '');
+      $widgetSetting .= (!empty($option['govph_custom_border_color']) ? 'border-color:'.$option['govph_custom_border_color'].';' : '');
+      $widgetSetting .= (!empty($option['govph_custom_background_color']) ? 'background-color:'.$option['govph_custom_background_color'].';' : '');
+      echo $widgetSetting;
       break;
-    case 'govph_custom_border_radius':
-      $border = (!empty($option['govph_custom_border_radius']) ? 'border-radius:'.$option['govph_custom_border_radius'].'px ;' : '');
-      echo $border;
+    case 'govph_headings_setting':
+      $headings = (!empty($option['govph_custom_headings_text']) ? 'text-transform:'.$option['govph_custom_headings_text'].';' : '');
+      $headings .= (!empty($option['govph_custom_headings_size']) ? 'font-size:'.$option['govph_custom_headings_size'].'em;' : '');
+      echo $headings;
       break;
-    case 'govph_custom_border_color':
-      $border = (!empty($option['govph_custom_border_color']) ? 'border-color:'.$option['govph_custom_border_color'].';' : '');
-      echo $border;
-      break;
-    case 'govph_custom_headings_text':
-      $size = (!empty($option['govph_custom_headings_text']) ? 'text-transform:'.$option['govph_custom_headings_text'].';' : '');
-      echo $size;
-      break;
-    case 'govph_custom_headings_size':
-      $size = (!empty($option['govph_custom_headings_size']) ? 'font-size:'.$option['govph_custom_headings_size'].'em;' : '');
-      echo $size;
-      break;
-    case 'govph_custom_headings_inner_page_size':
+    case 'govph_inner_headings_setting':
       $size = (!empty($option['govph_custom_headings_inner_page_size']) ? 'font-size:'.$option['govph_custom_headings_inner_page_size'].'em;' : '');
+      $size .= (!empty($option['govph_custom_headings_text']) ? 'text-transform:'.$option['govph_custom_headings_text'].';' : '');
       echo $size;
-      break;
-    case 'govph_custom_background_color':
-      $bg = (!empty($option['govph_custom_background_color']) ? 'background-color:'.$option['govph_custom_background_color'].';' : '');
-      echo $bg;
       break;
     case 'govph_custom_footer_background_color':
       $border = (!empty($option['govph_custom_footer_background_color']) ? 'background-color:'.$option['govph_custom_footer_background_color'].';' : '');

@@ -115,7 +115,6 @@ is_active_sidebar('footer-4')): ?>
 
 <!-- philippine standard time -->
 <script type="text/javascript" id="gwt-pst">
-
 (function(d, eId) {
 	var js, gjs = d.getElementById(eId);
 	js = d.createElement('script'); js.id = 'gwt-pst-jsdk';
@@ -124,18 +123,13 @@ is_active_sidebar('footer-4')): ?>
 }(document, 'gwt-pst'));
 
 var gwtpstReady = function(){
-	var otherFormat = 'dddd, mmmm dd, yyyy, h:mm:ss TT';
-	var firstPst = new gwtpstTime('pst-time', {format: otherFormat});
+	var firstPst = new gwtpstTime('pst-time');
 }
 </script>
 <!-- end philippine standard time -->
 
 <?php wp_footer(); ?>
-<script type="text/javascript">
-	(function($) {
-	jQuery(document).foundation();
-})(jQuery);
-</script>
+
 <div><a href="#page" id="back-to-top" style="display: inline;"><i class="fa fa-arrow-circle-up fa-2x"></i></a></div>
 </body>
 </html>

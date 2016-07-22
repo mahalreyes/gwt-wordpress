@@ -13,12 +13,10 @@
 			if(has_post_thumbnail()) : 
 				$content_class = 'large-9';
 				the_post_thumbnail( 'thumbnail', array( 'class' => 'thumbnail') );
+			endif;
 
-			if (has_post_thumbnail() && is_active_sidebar('left-sidebar') && is_active_sidebar('right-sidebar')) {
+			if (has_post_thumbnail() && is_active_sidebar('left-sidebar') && is_active_sidebar('right-sidebar')) :
 				$content_class = 'large-8';
-			}
-			 	
-			
 			endif;
 		?>
 		

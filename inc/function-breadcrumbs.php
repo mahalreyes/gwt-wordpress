@@ -11,7 +11,6 @@ function gwt_wp_breadcrumb() {
 	}
 	$separator = $option['govph_breadcrumbs_separator'] ? $option['govph_breadcrumbs_separator'] : ' / ';
 	$separator_block = '<span class="separator">'.$separator.'</span>';
-
 	
 	if (!is_home()) {
 		echo '<ul class="breadcrumbs">';
@@ -64,7 +63,7 @@ function gwt_wp_breadcrumb() {
 			echo '<li><span class="current show-for-sr">Current: </span>'.get_the_title().'</li>';
 		}
 	}
-  
+	
 	if (is_archive()) {
 		if (is_day()) {echo "<li>"; the_time('F jS, Y'); echo '</li>';}
 		elseif (is_month()) {echo "<li>"; the_time('F Y'); echo '</li>';}
@@ -74,6 +73,6 @@ function gwt_wp_breadcrumb() {
 		elseif (is_search()) {echo "<li>Search Results"; echo '</li>';}
 	}
 	echo '</ul>';
-  
+
 	return true;
 }

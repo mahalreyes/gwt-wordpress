@@ -3,13 +3,13 @@
  * Insert default widgets
  * on left sidebar
  *
- * @package gwt_wp
+ * @package GWT
+ * @since Government Website Template 2.0
  */
 
-function set_default_theme_widgets ($old_theme, $WP_theme = null) {
+function govph_default_widget() {
 
 	$templatedir = get_template_directory_uri();
-
 	$new_active_widgets = array (
 		'left-sidebar' => array (
 			'text-1',
@@ -18,13 +18,11 @@ function set_default_theme_widgets ($old_theme, $WP_theme = null) {
 			'text-2',
 		),
 	);
-
 	update_option('widget_text',array( 
 		1 => array(
 			'title' => '',
 			'text' => '<a href=""><img id="tp-seal" src="'. $templatedir . '/images/transparency-seal-160x160.png" alt="transparency seal logo" title="Transparency Seal"></a>',
 		),
-
 		2=> array(
 			'title' => '',
 			'text' => '<div id="pst-container">
@@ -34,4 +32,4 @@ function set_default_theme_widgets ($old_theme, $WP_theme = null) {
 	));
 	update_option('sidebars_widgets', $new_active_widgets);
 }
-add_action('after_switch_theme', 'set_default_theme_widgets', 10, 2);
+add_action('after_switch_theme', 'govph_default_widget', 10, 2);

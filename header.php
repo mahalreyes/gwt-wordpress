@@ -28,16 +28,16 @@
 			<?php govph_displayoptions( 'govph_anchorcolor' ); ?>
 		}
 		div .container-masthead {
-			<?php govph_displayoptions( 'govph_headercolor' ); ?>
-			<?php govph_displayoptions( 'govph_headerimage' ); ?>
+			<?php govph_displayoptions( 'govph_header_setting' ); ?>
 		}
 		h1.logo a {
-			<?php govph_displayoptions( 'govph_header_font_color' ); ?>
-			<?php govph_displayoptions( 'govph_logo_position' ); ?>
+			<?php govph_displayoptions( 'govph_logo_setting' ); ?>
 		}
 		div.container-banner {
-			<?php govph_displayoptions( 'govph_slidercolor' ); ?>
-			<?php govph_displayoptions( 'govph_sliderimage' ); ?>
+			<?php govph_displayoptions( 'govph_slider_setting' ); ?>
+		}
+		.banner-content, .orbit .orbit-bullets {
+			<?php govph_displayoptions( 'govph_slider_fullwidth' ); ?>
 		}
 		#pst-container {
 			<?php govph_displayoptions( 'govph_custom_pst' ); ?>
@@ -49,18 +49,13 @@
 			<?php govph_displayoptions( 'govph_custom_panel_bottom' ); ?>
 		}
 		#sidebar-left .widget, #sidebar-right .widget, .callout.secondary {
-			<?php govph_displayoptions( 'govph_custom_border_width' ); ?>
-			<?php govph_displayoptions( 'govph_custom_border_radius' ); ?>
-			<?php govph_displayoptions( 'govph_custom_border_color' ); ?>
-			<?php govph_displayoptions( 'govph_custom_background_color' ); ?>
+			<?php govph_displayoptions( 'govph_widget_setting' ); ?>
 		}
 		.container-main .entry-title a {
-			<?php govph_displayoptions( 'govph_custom_headings_text' ); ?>
-			<?php govph_displayoptions( 'govph_custom_headings_size' ); ?>
+			<?php govph_displayoptions( 'govph_headings_setting' ); ?>
 		}
 		.container-banner .entry-title {
-			<?php govph_displayoptions( 'govph_custom_headings_text' ); ?>
-			<?php govph_displayoptions( 'govph_custom_headings_inner_page_size' ); ?>
+			<?php govph_displayoptions( 'govph_inner_headings_setting' ); ?>
 		}
 		#footer {
 			<?php govph_displayoptions( 'govph_custom_footer_background_color' ); ?>
@@ -75,9 +70,9 @@
 
 <div id="accessibility-shortcuts">
 	<ul>
-		<li><a href="#" class="skips toggle-statement" title="Toggle Accessibility Statement" accesskey="0">Toggle Accessibility Statement</a></li>
+		<li><a href="#" class="skips toggle-statement" title="Toggle Accessibility Statement" accesskey="0" data-toggle="a11y-modal">Toggle Accessibility Statement</a></li>
 		<?php if($govph_acc_link_home = govph_displayoptions('govph_acc_link_home')): ?>
-		<li><a href="<?php echo $govph_acc_link_home; ?>" accesskey="1">Home</a></li>
+		<li><a href="<?php echo $govph_acc_link_home; ?>" accesskey="h">Home</a></li>
 		<?php endif; ?>
 		<?php if($govph_acc_link_contact = govph_displayoptions('govph_acc_link_contact')): ?>
 		<li><a href="<?php echo $govph_acc_link_contact; ?>" accesskey="c">Contacts</a></li>
@@ -85,8 +80,17 @@
 		<?php if($govph_acc_link_feedback = govph_displayoptions('govph_acc_link_feedback')): ?>
 		<li><a href="<?php echo $govph_acc_link_feedback; ?>" accesskey="k">Feedback</a></li>
 		<?php endif; ?>
+		<?php if($govph_acc_link_faq = govph_displayoptions('govph_acc_link_faq')): ?>
+		<li><a href="<?php echo $govph_acc_link_faq; ?>" accesskey="q">FAQ</a></li>
+		<?php endif; ?>
 		<?php if($govph_acc_link_search = govph_displayoptions('govph_acc_link_search')): ?>
 		<li><a href="<?php echo $govph_acc_link_search; ?>" accesskey="s">Search</a></li>
+		<?php endif; ?>
+		<?php if($govph_acc_link_main_content = govph_displayoptions('govph_acc_link_main_content')): ?>
+		<li><a href="<?php echo $govph_acc_link_main_content; ?>" accesskey="R">Skip to Main Content</a></li>
+		<?php endif; ?>
+		<?php if($govph_acc_link_sitemap = govph_displayoptions('govph_acc_link_sitemap')): ?>
+		<li><a href="<?php echo $govph_acc_link_sitemap; ?>" accesskey="M">Sitemap</a></li>
 		<?php endif; ?>
 	</ul>
 </div>
@@ -105,7 +109,7 @@ Shortcut Keys Combination Activation
 	Accessibility Statement (Combination + 0): Statement page that will show the available accessibility keys. 
 	Home Page (Combination + 1): Accessibility key for redirecting to homepage. 
 	Main Content (Combination + R): Shortcut for viewing the content section of the current page. 
-	FAQ (Combination + 5): Shortcut for FAQ page. 
+	FAQ (Combination + Q): Shortcut for FAQ page. 
 	Contact (Combination + C): Shortcut for contact page or form inquiries. 
 	Feedback (Combination + K): Shortcut for feedback page. 
 	Site Map (Combination + M): Shortcut for site map (footer agency) section of the page. 
@@ -137,8 +141,9 @@ Press esc, or click the close the button to close this dialog box.
 			<div class="list-item" ><?php get_search_form(); ?></div>
 			<ul class="vertical menu" data-drilldown data-parent-link="true">
 				<?php wp_nav_menu( array('theme_location'  => 'topbar_left', 'items_wrap' => '%3$s', 'container' => false, 'walker' => new Off_Canvass_Menu() )); ?> 
-				<li id="aux-offmenu" class="list-item">AUXILIARY MENU</li>
 				<?php wp_nav_menu( array('theme_location'  => 'topbar_right', 'items_wrap' => '%3$s', 'container' => false, 'walker' => new Off_Canvass_Menu() )); ?>
+				<li id="aux-offmenu" class="list-item">AUXILIARY MENU</li>
+				<?php wp_nav_menu( array('theme_location'  => 'aux_nav', 'items_wrap' => '%3$s', 'container' => false, 'walker' => new Off_Canvass_Menu() )); ?>
 			</ul>
 		</nav>
 

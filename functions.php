@@ -36,6 +36,11 @@ require get_template_directory() . '/inc/function-enqueue_scripts.php';
 require get_template_directory() . '/inc/function-disable_comments.php';
 
 /**
+ * GovPH default widgets
+ */
+require get_template_directory() . '/inc/govph_widget.php';
+
+/**
  * Default sidebar contents
  */
 require get_template_directory() . '/inc/sidebar.php';

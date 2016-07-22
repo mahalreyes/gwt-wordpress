@@ -38,14 +38,21 @@ function efs_get_slider(){
 					<ul class="orbit-container">';		
 		
 		$count = 0;
+		$x = 1;
 		while (have_posts()) : the_post();
-		
-		$img = get_the_post_thumbnail($post_id, 'full', array( 'class' => 'orbit-image' ));
-		$slide_link = get_the_content($post_id);
-		$caption = get_the_title();
+			$count++;
+		endwhile;
 
-		$slider.='<li class="orbit-slide is-active"><a href='.$slide_link.'>'.$img.'</a><figcaption class="orbit-caption">'.$caption.'</figcaption></li>';
-		$count++;
+		while (have_posts()) : the_post();
+			$img = get_the_post_thumbnail($post_id, 'full', array( 'class' => 'orbit-image' ));
+			$slide_link = get_the_content($post_id);
+			$caption = get_the_title();
+
+			if ($x > $count) {
+				$x = 1;
+			}
+			$slider.='<li class="orbit-slide is-active"><div class="orbit-slide-number"><span>'.$x.'</span> of <span>'.$count.'</span></div><a href='.$slide_link.'>'.$img.'</a><figcaption class="orbit-caption">'.$caption.'</figcaption></li>';
+			$x++;
 		endwhile;
 
 		if($count > 1) {

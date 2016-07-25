@@ -620,20 +620,20 @@ h6 {font-size: 0.63rem;}
 		border: none;
 	}
 	.container-banner { border-bottom: 1px solid #f2f2f2; padding: 1rem 0; } 
-	#agency-name { font-size: inherit; }
+	
 }
 
 /**
- * 1024px <=> 1440px
+ * 1025px <=> 1440px
  */
-@media only screen and (min-width: 64em) and (max-width: 90em) { }
+@media only screen and (min-width: 64.0625em) and (max-width: 90em) { #agency-name { font-size: inherit; } }
 
 /*XLarge screens*/
 
 /**
  * >= 1441px
  */
-@media only screen and (min-width: 90.063em) { }
+@media only screen and (min-width: 90.063em) { #agency-name { font-size: inherit; } }
 
 /**
  * 1441px <=> 1920px

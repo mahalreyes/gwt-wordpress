@@ -30,9 +30,9 @@ if(!is_home()){
 					<?php if (is_home()): ?>
 						<?php if($banner_slider = efs_get_slider()): ?>
 							<?php if(govph_displayoptions( 'govph_slider_full' ) == 'active'): ?>
-								<div id="banner-slider" class="large-12 show-for-large">
+								<div id="banner-slider" class="large-12 show-for-large show-for-medium">
 							<?php else: ?>
-								<div id="banner-slider" class="<?php echo $banner_class ?>">
+								<div id="banner-slider" class="<?php echo $banner_class ?> show-for-large show-for-medium">
 							<?php endif; ?>
 									<?php echo $banner_slider ?>
 								</div>

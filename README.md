@@ -23,7 +23,6 @@ For a list of known issues and RFEs, check the [issue tracking system](https://g
 - [Enhancement] Transparency Seal
 - [Enhancement] Accessibility Add-on
     - High Contrast mode
-    - Grayscale mode
     - Skip to Content
     - Skip to Footer
 

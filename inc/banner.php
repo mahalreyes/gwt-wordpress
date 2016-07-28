@@ -5,48 +5,48 @@ if (is_home()){
 	$banner_3_class = '';
 	if(is_active_sidebar('banner-section-1') && is_active_sidebar('banner-section-2')){
 		$banner_class = 'large-6 columns';
-		$banner_2_class = ' large-3';
-		$banner_3_class = ' large-3';
+		$banner_2_class = 'large-3 columns';
+		$banner_3_class = 'large-3 columns';
 	}
 	elseif(is_active_sidebar('banner-section-1') && !is_active_sidebar('banner-section-2')){
 		$banner_class = 'large-8 columns';
-		$banner_2_class = ' large-4';
+		$banner_2_class = 'large-4 columns';
 	}
 	elseif(!is_active_sidebar('banner-section-1') && is_active_sidebar('banner-section-2')){
 		$banner_class = 'large-8 columns';
-		$banner_3_class = 'large-4';
+		$banner_3_class = 'large-4 columns';
 	}
-$banner_class .= ' show-for-large';
+$banner_class .= ' show-for-medium show-for-large';
 }
 
 $container_class = '';
 if(!is_home()){
-  $container_class = ' banner-pads';
+  $container_class = 'banner-pads';
 }
 ?>		
 				<!-- banner -->
-				<div class="container-banner<?php echo $container_class; ?>">
+				<div class="container-banner <?php echo $container_class; ?>">
 					<?php govph_displayoptions( 'govph_slider_start' ); ?>
 					<?php if (is_home()): ?>
 						<?php if($banner_slider = efs_get_slider()): ?>
 							<?php if(govph_displayoptions( 'govph_slider_full' ) == 'active'): ?>
-								<div id="banner-slider" class="large-12 show-for-large show-for-medium">
+								<div id="banner-slider" class="large-12 show-for-medium show-for-large">
 							<?php else: ?>
-								<div id="banner-slider" class="<?php echo $banner_class ?> show-for-large show-for-medium">
+								<div id="banner-slider" class="<?php echo $banner_class ?>">
 							<?php endif; ?>
 									<?php echo $banner_slider ?>
 								</div>
 						<?php endif; ?>
 
 						<?php if(is_active_sidebar('banner-section-1')): ?>
-							<div id="banner-section-1" class="<?php echo $banner_2_class ?> columns">
+							<div id="banner-section-1" class="<?php echo $banner_2_class ?>">
 								<?php do_action( 'before_sidebar' ); ?>
 								<?php dynamic_sidebar( 'banner-section-1' ) ?>
 							</div>
 						<?php endif; ?>
 
 						<?php if(is_active_sidebar('banner-section-2')): ?>
-							<div id="banner-section-2" class="<?php echo $banner_3_class ?> columns">
+							<div id="banner-section-2" class="<?php echo $banner_3_class ?>">
 								<?php do_action( 'before_sidebar' ); ?>
 								<?php dynamic_sidebar( 'banner-section-2' ) ?>
 							</div>

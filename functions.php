@@ -38,7 +38,7 @@ require get_template_directory() . '/inc/function-disable_comments.php';
 /**
  * GovPH default widgets
  */
-require get_template_directory() . '/inc/govph_widget.php';
+require get_template_directory() . '/inc/govph-widget.php';
 
 /**
  * Default sidebar contents

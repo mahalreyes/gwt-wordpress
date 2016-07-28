@@ -70,8 +70,8 @@ class GOVPH
           });
 
           custom_uploader.open();
-
       });
+
       $('form').find('input#header_image_background_button').on('click', function(e){
         e.preventDefault();
 
@@ -100,8 +100,8 @@ class GOVPH
           });
 
           custom_uploader.open();
-
       });
+
       $('form').find('input#slider_image_background_button').on('click', function(e){
         e.preventDefault();
 
@@ -130,7 +130,6 @@ class GOVPH
           });
 
           custom_uploader.open();
-
       });
   });
   </script>
@@ -162,9 +161,10 @@ class GOVPH
     add_settings_field('govph_breadcrumbs_show_home', 'Breadcrumb Homepage Link', array($this, 'govph_breadcrumbs_show_home'), __FILE__, 'govph_main_section');
 
     // custom styling
-    add_settings_field('govph_custom_styling', '<h3>Theme Styling<h3>', array($this, 'govph_custom_styling'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_custom_section', '<h3>Theme Styling<h3>', array($this, 'govph_custom_section'), __FILE__, 'govph_main_section');
     add_settings_field('govph_custom_pst', 'Philippine Standard Time', array($this, 'govph_custom_pst'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_anchorcolor', 'Anchor Color Settings', array($this, 'govph_anchor_color_setting'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_custom_anchorcolor', 'Anchor Color Settings', array($this, 'govph_custom_anchorcolor'), __FILE__, 'govph_main_section');
+    add_settings_field('govph_custom_anchorcolor_hover', 'Anchor Color Settings (Hover)', array($this, 'govph_custom_anchorcolor_hover'), __FILE__, 'govph_main_section');
     add_settings_field('govph_custom_panel_top', 'Panel Top Color', array($this, 'govph_custom_panel_top'), __FILE__, 'govph_main_section');
     add_settings_field('govph_custom_panel_bottom', 'Panel Bottom Color', array($this, 'govph_custom_panel_bottom'), __FILE__, 'govph_main_section');
     add_settings_field('govph_custom_border_width', 'Border Width', array($this, 'govph_custom_border_width'), __FILE__, 'govph_main_section');
@@ -194,7 +194,6 @@ class GOVPH
     add_settings_field('govph_acc_link_faq', 'FAQ<br/>(Combination + Q)', array($this, 'govph_acc_link_faq'), __FILE__, 'govph_main_section');
     add_settings_field('govph_acc_link_sitemap', 'Site Map<br/>(Combination + M)', array($this, 'govph_acc_link_sitemap'), __FILE__, 'govph_main_section');
     add_settings_field('govph_acc_link_search', 'Search<br/>(Combination + S)', array($this, 'govph_acc_link_search'), __FILE__, 'govph_main_section');
-
   }
 
   public function govph_main_section_cb() { }
@@ -377,7 +376,7 @@ class GOVPH
   /**
    * Theme styling
    */
-  public function govph_custom_styling(){
+  public function govph_custom_section(){
   ?>
     <hr></hr>
   <?php
@@ -392,10 +391,18 @@ class GOVPH
   <?php
   }
 
-  public function govph_anchor_color_setting()
+  public function govph_custom_anchorcolor()
   {
   ?>
-    <input name="govph_options[govph_anchorcolor]" type="text" value="<?php echo $this->options['govph_anchorcolor']; ?>" class="my-color-field" data-default-color="#2795b6" />
+    <input name="govph_options[govph_custom_anchorcolor]" type="text" value="<?php echo $this->options['govph_custom_anchorcolor']; ?>" class="my-color-field" data-default-color="#2ba6cb" />
+    <br><span class="description">Change active links font color</span>
+  <?php
+  }
+
+  public function govph_custom_anchorcolor_hover()
+  {
+  ?>
+    <input name="govph_options[govph_custom_anchorcolor_hover]" type="text" value="<?php echo $this->options['govph_custom_anchorcolor_hover']; ?>" class="my-color-field" data-default-color="#258faf" />
     <br><span class="description">Change active links font color</span>
   <?php
   }
@@ -493,12 +500,16 @@ class GOVPH
   public function govph_custom_headings_text()
   {
     $nl = ($this->options['govph_custom_headings_text'] == "none" ? "selected" : "");
-    $caps = ($this->options['govph_custom_headings_text'] == "uppercase" ? "selected" : "");
+    $ups = ($this->options['govph_custom_headings_text'] == "uppercase" ? "selected" : "");
+    $lws = ($this->options['govph_custom_headings_text'] == "lowercase" ? "selected" : "");
+    $caps = ($this->options['govph_custom_headings_text'] == "capitalize" ? "selected" : "");
   ?>
     <select name="govph_options[govph_custom_headings_text]">
       <option value="">-- Select --</option>
       <option value="none" <?php echo $nl ?>>normal</option>
-      <option value="uppercase" <?php echo $caps ?>>uppercase</option>
+      <option value="uppercase" <?php echo $ups ?>>UPPERCASE</option>
+      <option value="lowercase" <?php echo $lws ?>>lowercase</option>
+      <option value="capitalize" <?php echo $caps ?>>Capitalize</option>
     </select>
     <br><span class="description">Blog section title text rendering</span>
   <?php
@@ -579,10 +590,10 @@ class GOVPH
   }
 
   public function govph_content_pub_author_lbl(){
-    $default = !empty($this->options['govph_content_pub_author_lbl']) ? $this->options['govph_content_pub_author_lbl'] : '&nbsp;by';
+    $default = !empty($this->options['govph_content_pub_author_lbl']) ? $this->options['govph_content_pub_author_lbl'] : 'by';
   ?>
     <input type="text" name="govph_options[govph_content_pub_author_lbl]" value="<?php echo $default ?>"><br/>
-    <span class="description">Publish author display label<br/>Note: Add a space at the start to add spacing after the date</span>
+    <span class="description">Publish author display label<br/></span>
   <?php
   }
 
@@ -754,17 +765,21 @@ function govph_displayoptions( $options ){
       $headerSetting .= (!empty($option['govph_headerimage']) ? 'background-image:url("'.$option['govph_headerimage'].'");' : '');
       echo $headerSetting;
       break;
-    
     case 'govph_slider_setting':
       $sliderSetting = (!empty($option['govph_sliderimage']) ? 'background-image:url("'.$option['govph_sliderimage'].'");background-size:cover;' : '');
       $sliderSetting .= (!empty($option['govph_slidercolor']) ? 'background-color:'.$option['govph_slidercolor'].';' : '');
       if ($option['govph_slider_fullwidth'] == 'true') {
         $sliderSetting .= 'padding: 0;';
+        $sliderSetting .= 'border-top: none;';
       }
       echo $sliderSetting;
       break;
     case 'govph_anchorcolor':
-      $anchorColor = (!empty($option['govph_anchorcolor']) ? 'color:'.$option['govph_anchorcolor'].' !important;' : '');
+      $anchorColor = (!empty($option['govph_custom_anchorcolor']) ? 'color:'.$option['govph_custom_anchorcolor'].' !important;' : '');
+      echo $anchorColor;
+      break;
+    case 'govph_anchorcolor_hover':
+      $anchorColor = (!empty($option['govph_custom_anchorcolor_hover']) ? 'color:'.$option['govph_custom_anchorcolor_hover'].' !important;' : '');
       echo $anchorColor;
       break;
     case 'govph_disable_search':
@@ -819,223 +834,44 @@ function govph_displayoptions( $options ){
     case 'govph_panel_top':
       get_sidebar('panel-top');
       break;
-    case 'govph_position_panel_top_1':
-    case 'govph_position_panel_top_2':
-    case 'govph_position_panel_top_3':
-    case 'govph_position_panel_top_4':
-      $panel_top_1 = '';
-      $panel_top_2 = '';
-      $panel_top_3 = '';
-      $panel_top_4 = '';
-      if(is_active_sidebar('panel-top-1')){
-        $panel_top_1 = 'large-12 ';
-        if(is_active_sidebar('panel-top-2')){
-          $panel_top_1 = 'large-6 ';
-          $panel_top_2 = 'large-6 ';
-          if(is_active_sidebar('panel-top-3')){
-            $panel_top_1 = 'large-6 ';
-            $panel_top_2 = 'large-3 ';
-            $panel_top_3 = 'large-3 ';
-            if(is_active_sidebar('panel-top-4')){
-              $panel_top_1 = 'large-3 ';
-              $panel_top_2 = 'large-3 ';
-              $panel_top_3 = 'large-3 ';
-              $panel_top_4 = 'large-3 ';
-            }
-          }
-          else{
-            $panel_top_3 = '';
-            if(is_active_sidebar('panel-top-4')){
-              $panel_top_1 = 'large-4 ';
-              $panel_top_2 = 'large-4 ';
-              $panel_top_4 = 'large-4 ';
-            }
-          }
-        }
-        else{
-          $panel_top_2 = '';
-          if(is_active_sidebar('panel-top-3')){
-            $panel_top_1 = 'large-6 ';
-            $panel_top_3 = 'large-6 ';
-            if(is_active_sidebar('panel-top-4')){
-              $panel_top_1 = 'large-4 ';
-              $panel_top_3 = 'large-4 ';
-              $panel_top_4 = 'large-4 ';
-            }
-          }
-          else{
-            $panel_top_3 = '';
-            if(is_active_sidebar('panel-top-4')){
-              $panel_top_1 = 'large-6 ';
-              $panel_top_4 = 'large-6 ';
-            }
-          }
-        }
+    case 'govph_position_panel_top':
+      $ctr=0;
+      for ( $i=1; $i < 5; $i++ ) { 
+        if(is_active_sidebar('panel-top-'. $i)) { $ctr += 1; }
       }
-      else{
-        $panel_top_1 = '';
-        if(is_active_sidebar('panel-top-2')){
-          $panel_top_2 = 'large-12 ';
-          if(is_active_sidebar('panel-top-3')){
-            $panel_top_2 = 'large-6 ';
-            $panel_top_3 = 'large-6 ';
-            if(is_active_sidebar('panel-top-4')){
-              $panel_top_2 = 'large-3 ';
-              $panel_top_3 = 'large-3 ';
-              $panel_top_4 = 'large-6 ';
-            }
-          }
-          else{
-            $panel_top_3 = '';
-            if(is_active_sidebar('panel-top-4')){
-              $panel_top_2 = 'large-6 ';
-              $panel_top_4 = 'large-6 ';
-            }
-          }
-        }
-        else{
-          $panel_top_2 = '';
-          if(is_active_sidebar('panel-top-3')){
-            $panel_top_3 = 'large-12 ';
-            if(is_active_sidebar('panel-top-4')){
-              $panel_top_3 = 'large-6 ';
-              $panel_top_4 = 'large-6 ';
-            }
-          }
-          else{
-            $panel_top_3 = '';
-            if(is_active_sidebar('panel-top-4')){
-              $panel_top_4 = 'large-12 ';
-            }
-          }
-        }
-      }
-
-      if($options == 'govph_position_panel_top_1'){
-        echo $panel_top_1;
-      }
-      elseif($options == 'govph_position_panel_top_2'){
-        echo $panel_top_2;
-      }
-      elseif($options == 'govph_position_panel_top_3'){
-        echo $panel_top_3;
-      }
-      elseif($options == 'govph_position_panel_top_4'){
-        echo $panel_top_4;
-      }
+      if($ctr == 1){$val = 'large-12 columns';}
+      if($ctr == 2){$val = 'large-6 columns';}
+      if($ctr == 3){$val = 'large-4 columns';}
+      if($ctr == 4){$val = 'large-3 columns';}
+      
+      echo $val;
       break;
     case 'govph_panel_bottom':
       get_sidebar('panel-bottom');
       break;
-    case 'govph_position_panel_bottom_1':
-    case 'govph_position_panel_bottom_2':
-    case 'govph_position_panel_bottom_3':
-    case 'govph_position_panel_bottom_4':
-      $panel_top_1 = '';
-      $panel_top_2 = '';
-      $panel_top_3 = '';
-      $panel_top_4 = '';
-      if(is_active_sidebar('panel-bottom-1')){
-        $panel_top_1 = 'large-12 ';
-        if(is_active_sidebar('panel-bottom-2')){
-          $panel_top_1 = 'large-6 ';
-          $panel_top_2 = 'large-6 ';
-          if(is_active_sidebar('panel-bottom-3')){
-            $panel_top_1 = 'large-6 ';
-            $panel_top_2 = 'large-3 ';
-            $panel_top_3 = 'large-3 ';
-            if(is_active_sidebar('panel-bottom-4')){
-              $panel_top_1 = 'large-3 ';
-              $panel_top_2 = 'large-3 ';
-              $panel_top_3 = 'large-3 ';
-              $panel_top_4 = 'large-3 ';
-            }
-          }
-          else{
-            $panel_top_3 = '';
-            if(is_active_sidebar('panel-bottom-4')){
-              $panel_top_1 = 'large-4 ';
-              $panel_top_2 = 'large-4 ';
-              $panel_top_4 = 'large-4 ';
-            }
-          }
-        }
-        else{
-          $panel_top_2 = '';
-          if(is_active_sidebar('panel-bottom-3')){
-            $panel_top_1 = 'large-6 ';
-            $panel_top_3 = 'large-6 ';
-            if(is_active_sidebar('panel-bottom-4')){
-              $panel_top_1 = 'large-4 ';
-              $panel_top_3 = 'large-4 ';
-              $panel_top_4 = 'large-4 ';
-            }
-          }
-          else{
-            $panel_top_3 = '';
-            if(is_active_sidebar('panel-bottom-4')){
-              $panel_top_1 = 'large-6 ';
-              $panel_top_4 = 'large-6 ';
-            }
-          }
-        }
+    case 'govph_position_panel_bottom':
+      $ctr=0;
+      for ( $i=1; $i < 5; $i++ ) { 
+        if(is_active_sidebar('panel-bottom-'. $i)) { $ctr += 1; }
       }
-      else{
-        $panel_top_1 = '';
-        if(is_active_sidebar('panel-bottom-2')){
-          $panel_top_2 = 'large-12 ';
-          if(is_active_sidebar('panel-bottom-3')){
-            $panel_top_2 = 'large-6 ';
-            $panel_top_3 = 'large-6 ';
-            if(is_active_sidebar('panel-bottom-4')){
-              $panel_top_2 = 'large-3 ';
-              $panel_top_3 = 'large-3 ';
-              $panel_top_4 = 'large-6 ';
-            }
-          }
-          else{
-            $panel_top_3 = '';
-            if(is_active_sidebar('panel-bottom-4')){
-              $panel_top_2 = 'large-6 ';
-              $panel_top_4 = 'large-6 ';
-            }
-          }
-        }
-        else{
-          $panel_top_2 = '';
-          if(is_active_sidebar('panel-bottom-3')){
-            $panel_top_3 = 'large-12 ';
-            if(is_active_sidebar('panel-bottom-4')){
-              $panel_top_3 = 'large-6 ';
-              $panel_top_4 = 'large-6 ';
-            }
-          }
-          else{
-            $panel_top_3 = '';
-            if(is_active_sidebar('panel-bottom-4')){
-              $panel_top_4 = 'large-12 ';
-            }
-          }
-        }
-      }
-
-      if($options == 'govph_position_panel_bottom_1'){
-        echo $panel_top_1;
-      }
-      elseif($options == 'govph_position_panel_bottom_2'){
-        echo $panel_top_2;
-      }
-      elseif($options == 'govph_position_panel_bottom_3'){
-        echo $panel_top_3;
-      }
-      elseif($options == 'govph_position_panel_bottom_4'){
-        echo $panel_top_4;
-      }
+      if($ctr == 1){$val = 'large-12 columns';}
+      if($ctr == 2){$val = 'large-6 columns';}
+      if($ctr == 3){$val = 'large-4 columns';}
+      if($ctr == 4){$val = 'large-3 columns';}
+      
+      echo $val;
       break;
-    case 'govph_accessibility_links_front':
-      $links = '<ul>';
-      $links .= '<li><a href="">Skip to Main Content</a></li>';
-      $links .= '</ul>';
+    case 'govph_position_agency_footer':
+      $ctr=0;
+      for ( $i=1; $i < 5; $i++ ) { 
+        if(is_active_sidebar('footer-'. $i)) { $ctr += 1; }
+      }
+      if($ctr == 1){$val = 'large-12 columns';}
+      if($ctr == 2){$val = 'large-6 columns';}
+      if($ctr == 3){$val = 'large-4 columns';}
+      if($ctr == 4){$val = 'large-3 columns';}
+      
+      echo $val;
       break;
     case 'govph_slider_full':
       if ($option['govph_slider_fullwidth'] == 'true') {
@@ -1060,19 +896,19 @@ function govph_displayoptions( $options ){
       }
       break;
     case 'govph_banner_title_start':
-      if ($option['govph_slider_fullwidth'] == 'true' && is_active_sidebar('banner-section-1') || is_active_sidebar('banner-section-2')) {
-        echo '';
-      }
-      elseif ($option['govph_slider_fullwidth'] == 'true') {
+      if ($option['govph_slider_fullwidth'] == 'true') {
         echo '<div class="row">';
+      }
+      elseif ($option['govph_slider_fullwidth'] != 'true') {
+        echo '';
       }
       break;
     case 'govph_banner_title_end':
-      if ($option['govph_slider_fullwidth'] == 'true' &&  is_active_sidebar('banner-section-1') || is_active_sidebar('banner-section-2')) {
-        echo '';
-      } 
-      elseif ($option['govph_slider_fullwidth'] == 'true') {
+      if ($option['govph_slider_fullwidth'] == 'true') {
         echo '</div>';
+      } 
+      elseif ($option['govph_slider_fullwidth'] != 'true') {
+        echo '';
       }
       break;
     case 'govph_slider_fullwidth':
@@ -1082,8 +918,7 @@ function govph_displayoptions( $options ){
       else {
         echo 'display: none;';
       }
-
-    break;
+      break;
     case 'govph_acc_link_statement':
       if(!empty($option['govph_acc_link_statement'])){
         $value = '';
@@ -1163,11 +998,11 @@ function govph_displayoptions( $options ){
     case 'govph_custom_panel_bottom':
       $bg = (!empty($option['govph_custom_panel_bottom']) ? 'background-color:'.$option['govph_custom_panel_bottom'].';' : '');
       echo $bg;
-    break;
+      break;
     case 'govph_widget_setting':
-      $widgetSetting = (!empty($option['govph_custom_border_width']) ? 'border-width:'.$option['govph_custom_border_width'].'px ;' : '');
-      $widgetSetting .= (!empty($option['govph_custom_border_radius']) ? 'border-radius:'.$option['govph_custom_border_radius'].'px ;' : '');
-      $widgetSetting .= (!empty($option['govph_custom_border_color']) ? 'border-color:'.$option['govph_custom_border_color'].';' : '');
+      $widgetSetting = isset($option['govph_custom_border_width']) ? 'border:'.$option['govph_custom_border_width'].'px solid' : '0';
+      $widgetSetting .= (!empty($option['govph_custom_border_color']) ? ' '.$option['govph_custom_border_color'].';' : '');
+      $widgetSetting .= isset($option['govph_custom_border_radius']) ? 'border-radius:'.$option['govph_custom_border_radius'].'px ;' : '0';
       $widgetSetting .= (!empty($option['govph_custom_background_color']) ? 'background-color:'.$option['govph_custom_background_color'].';' : '');
       echo $widgetSetting;
       break;
@@ -1182,8 +1017,8 @@ function govph_displayoptions( $options ){
       echo $size;
       break;
     case 'govph_custom_footer_background_color':
-      $border = (!empty($option['govph_custom_footer_background_color']) ? 'background-color:'.$option['govph_custom_footer_background_color'].';' : '');
-      echo $border;
+      $bg = (!empty($option['govph_custom_footer_background_color']) ? 'background-color:'.$option['govph_custom_footer_background_color'].';' : '');
+      echo $bg;
       break;
   }
  }

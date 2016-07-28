@@ -24,8 +24,14 @@
 	<?php wp_head(); ?>
 
 	<style <?php the_tags(); ?>>
-		.container-main a {
+		.container-main a, .container-main a:active, .container-main a:visited, 
+		.anchor a, .anchor a:active, .anchor a:visited {
 			<?php govph_displayoptions( 'govph_anchorcolor' ); ?>
+		}
+		
+		.container-main a:focus, .container-main a:hover, 
+		.anchor a:focus, .anchor a:hover {
+			<?php govph_displayoptions( 'govph_anchorcolor_hover' ); ?>
 		}
 		div .container-masthead {
 			<?php govph_displayoptions( 'govph_header_setting' ); ?>
@@ -107,7 +113,7 @@ Shortcut Keys Combination Activation
 	For Internet Explorer press (Alt+Shift+shortcut_key) then press (enter) 
 
 	Accessibility Statement (Combination + 0): Statement page that will show the available accessibility keys. 
-	Home Page (Combination + 1): Accessibility key for redirecting to homepage. 
+	Home Page (Combination + H): Accessibility key for redirecting to homepage. 
 	Main Content (Combination + R): Shortcut for viewing the content section of the current page. 
 	FAQ (Combination + Q): Shortcut for FAQ page. 
 	Contact (Combination + C): Shortcut for contact page or form inquiries. 

@@ -8,8 +8,7 @@
  * @since Government Website Template 2.0
  */
 ?>
-	</div><!-- #content -->
-</div><!-- #page -->
+	
 
 <!-- agency footer -->
 <?php if(is_active_sidebar('footer-1') || is_active_sidebar('footer-2') || is_active_sidebar('footer-3') ||
@@ -49,6 +48,13 @@ is_active_sidebar('footer-4')): ?>
 
 <!-- standard footer -->
 <div id="gwt-standard-footer"></div>
+<!-- end standard footer -->
+
+</div><!-- #off-canvass-content -->
+</div><!-- #off-canvass-wrapper inner -->
+</div><!-- #off-canvass-wrapper -->
+
+<!-- standard footer script -->
 <script type="text/javascript">
 (function(d, s, id) {
   var js, gjs = d.getElementById('gwt-standard-footer');
@@ -58,9 +64,9 @@ is_active_sidebar('footer-4')): ?>
   gjs.parentNode.insertBefore(js, gjs);
 }(document, 'script', 'gwt-footer-jsdk'));
 </script>
-<!-- end standard footer -->
 
-<!-- philippine standard time -->
+
+<!-- philippine standard time script-->
 <script type="text/javascript" id="gwt-pst">
 (function(d, eId) {
 	var js, gjs = d.getElementById(eId);

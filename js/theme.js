@@ -81,7 +81,7 @@ function eraseCookie(name) {
 		if(this.options.accessible){
 			$(this.$srText).text(this.options.controlPlayText);
 		}
-		$(this.$buttonText).html("▶︎");
+		$(this.$buttonText).html("<i class='fa fa-play' aria-hidden='true'></i>");
 	}
 	
 	Foundation.Orbit.prototype.controlPlay = function(){
@@ -94,7 +94,7 @@ function eraseCookie(name) {
 		if(this.options.accessible){
 			$(this.$srText).text(this.options.controlPauseText);
 		}
-		$(this.$buttonText).html("&#10073;&#10073;&nbsp;");
+		$(this.$buttonText).html("<i class='fa fa-pause' aria-hidden='true'></i>");
 	}
 	
 	$('[data-orbit]').on('init.zf.orbit', function(e){

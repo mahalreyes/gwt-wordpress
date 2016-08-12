@@ -1,5 +1,5 @@
 /*
- * Theme Name:		GWT-Wordpress 2.5
+ * Theme Name:		GWT-Wordpress 25.0
  * Theme URI:		http://i.gov.ph
  * Description:		Custom WordPress theme based on the draft Unified Web Content Policy 
  *					prepared by the PCDSPO, DOST-ASTI, and DOST-ICTO. Theme is built on 
@@ -447,7 +447,7 @@ h1.logo img { font-size: 1rem; }
 .orbit-slide { max-height: 100% !important; }
 .orbit-bullets { margin: 0; }
 .orbit-bullets button { width: 1vw; height: 1vw; vertical-align: middle; }
-.orbit-slide-number { position: absolute; top: 3%; left: 1%; font-size: 0.750rem; color: white; background: rgba(0, 0, 0, 0); }
+.orbit-slide-number { position: absolute; top: 3%; left: 1%; font-size: 0.750rem; color: white; background: rgba(0, 0, 0, 0); text-shadow: 1px 1px 3px #000}
 .orbit-container .orbit-slide-number span { font-weight: 700; padding: 0.3125rem; }
 .orbit-button-controls { position: absolute; top: 0f; right: 0; color: white; text-shadow: 1px 1px 3px #000; padding: 10px 20px; z-index: 3; height: auto !important;}
 

@@ -615,6 +615,7 @@ class GOVPH
       <li>Chrome for Windows press (Alt+shortcut_key)</li>
       <li>For Firefox press (Alt+Shift+shortcut_key)</li>
       <li>For Internet Explorer press (Alt+Shift+shortcut_key) then press (enter)</li>
+      <li>On Mac OS press (Ctrl+Opt+shortcut_key)</li>
     </ul>
   <?php
   }

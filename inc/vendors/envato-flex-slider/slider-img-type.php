@@ -22,7 +22,6 @@ function efs_register() {
     set_post_thumbnail_size(CPT_THUMB_SIZE);
 }  
 
-
 add_action('init', 'efs_register');
 
 ?>

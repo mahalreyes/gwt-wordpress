@@ -8,13 +8,24 @@ Use this as a a guide for creating your banner slider images:
 ## Known bugs and requests for enhancements (RFEs)
 For a list of known issues and RFEs, check the [issue tracking system](https://github.com/iGovPhil/gwt-wordpress/issues).
 
-## Future updates (v2.1)
- - Enhanced PST module
- - Foundation 6 framework
- - Enhanced accessibility features
- - Est. release date: April 20, 2016
+## Future updates
+ - Tabbed Theme Options
 
 ## CHANGE LOGS
+**07/22/2016**
+- [Update] Foundation version 6.2.2
+- [Features] Philippine Standard Time (PST)
+    - Font customization
+- [Features] Panel Top & Bottom section
+    - Background color customization
+- [Enhancement] Orbit Slider
+- [Enhancement] Responsive Mobile Menu
+- [Enhancement] Transparency Seal
+- [Enhancement] Accessibility Add-on
+    - High Contrast mode
+    - Skip to Content
+    - Skip to Footer
+
 **02/29/2016**
 - Fixed mega menu structure
 - Fixed banner slider full width

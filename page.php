@@ -7,7 +7,8 @@
  * and that other 'pages' on your WordPress site will use a
  * different template.
  *
- * @package gwt_wp
+ * @package GWT
+ * @since Government Website Template 2.0
  */
 
 get_header();
@@ -20,17 +21,13 @@ include_once('inc/banner.php');
 	<div class="row">
 		
 		<div id="content" class="<?php govph_displayoptions( 'govph_content_position' ); ?>columns" role="main">
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php 
+				while( have_posts() ) : the_post(); 
 				
-				<?php get_template_part ('content', 'page'); ?>
+				get_template_part('template-parts/content', 'page'); 
 				
-				<!-- comments (uncommented out) -->
-				<?php
-					//If comments are open or there is at least one comment, load up the comment template
-					//if ( comments_open() || '0' !=get_comments_number() )
-					//	comments_template();
-				?>
-			<?php endwhile; //end of the loop ?>
+				endwhile; //end of the loop 
+			?>
 		</div><!-- end content -->
 		
 		<?php 

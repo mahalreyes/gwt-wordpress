@@ -1,16 +1,17 @@
 <?php
 /**
- * The template for displaying image attachments.
+ * The template for displaying image attachments
  *
- * @package gwt_wp
+ * @package GWT
+ * @since Government Website Template 2.0
  */
 
 get_header();
 include_once('inc/banner.php');
 ?>
 
-  <div id="container-main" class="container-main" role="document">
-    <div id="main-content" class="row">
+	<div id="container-main" class="container-main" role="document">
+		<div id="main-content" class="row">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 

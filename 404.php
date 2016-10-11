@@ -1,15 +1,15 @@
 <?php
 /**
- * The template for displaying 404 pages (Not Found).
+ * The template for displaying 404 pages (not found)
  *
- * @package gwt_wp
+ * @package GWT
+ * @since Government Website Template 2.0
  */
 
 get_header();
 ?>
 
 <div id="main-content" class="row container-main" >
-	
 	<div class="large-2 medium-2 columns"><p></p></div>
 	
 	<div class="large-8 medium-8 columns">
@@ -25,7 +25,6 @@ get_header();
 	</div>
 	
 	<div class="large-2 medium-2 columns"><p></p></div>
-	
 </div>
 
 <?php get_footer(); ?>

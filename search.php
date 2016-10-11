@@ -1,8 +1,9 @@
 <?php
 /**
- * The template for displaying Search Results pages.
+ * The template for displaying search results pages
  *
- * @package gwt_wp
+ * @package GWT
+ * @since Government Website Template 2.0
  */
 
 get_header();
@@ -17,7 +18,7 @@ include_once('inc/banner.php');
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php get_template_part( 'content', 'search' ); ?>
+					<?php get_template_part( 'template-parts/content', 'search' ); ?>
 
 				<?php endwhile; ?>
 
@@ -25,7 +26,7 @@ include_once('inc/banner.php');
 
 			<?php else : ?>
 
-				<?php get_template_part( 'no-results', 'search' ); ?>
+				<?php get_template_part( 'template-parts/content', 'none' ); ?>
 
 			<?php endif; ?>
 		</div>
@@ -41,5 +42,7 @@ include_once('inc/banner.php');
 		?>		
 	</div>
 </div>
+
+<?php govph_displayoptions( 'govph_panel_bottom' ); ?>
 
 <?php get_footer(); ?>

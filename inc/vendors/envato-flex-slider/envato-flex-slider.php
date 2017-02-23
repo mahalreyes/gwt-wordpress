@@ -16,16 +16,6 @@ define ("EFS_VERSION", "0.5");
 /*Files to Include*/
 require_once('slider-img-type.php');
 
-/*Add the Hooks to place the javascript in the header*/
-function efs_script() {
-	print '<script type="text/javascript" charset="utf-8">
-			jQuery(window).load(function() {
-			jQuery(\'.flexslider\').flexslider();
-			});
-		</script>';
-}
-add_action('wp_head', 'efs_script');
-
 function efs_get_slider(){
 	$efs_query = "post_type=slider-image";
 	query_posts($efs_query);
@@ -34,7 +24,7 @@ function efs_get_slider(){
 	
 	if (have_posts()) : 	
 		
-		$slider = '<div class="orbit" role="region" aria-label="Banner Slider" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade">
+		$slider = '<div class="orbit" role="region" aria-label="Banner Slider" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out">
 					<ul class="orbit-container">';		
 		
 		$count = 0;

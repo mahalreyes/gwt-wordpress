@@ -15,6 +15,7 @@ For a list of known issues and RFEs, check the [issue tracking system](https://g
 **02/23/2017**
 - Fixed empty menu issue when nothing is assigned
 - Added automatic display of auxiliary menu if menu is present, removed theme option selection
+- Fixed banner left button bug.
 
 **07/22/2016**
 - [Update] Foundation version 6.2.2

@@ -141,7 +141,6 @@ class GOVPH
     register_setting('govph_options','govph_options');
     add_settings_section('govph_main_section', '', array($this, 'govph_main_section_cb'), __FILE__);
     add_settings_field('govph_general_section', '<h3>General Options<h3>', array($this, 'govph_general_section'), __FILE__, 'govph_main_section');
-    add_settings_field('govph_auxmenu', 'Auxiliary Menu', array($this, 'govph_auxmenu'), __FILE__, 'govph_main_section');
     add_settings_field('govph_disable_search', 'Search Enable', array($this, 'govph_disable_search'), __FILE__, 'govph_main_section');
     add_settings_field('govph_logo_enable', 'Enable Image Logo', array($this, 'govph_logo_enable'), __FILE__, 'govph_main_section');
     add_settings_field('govph_agency_name', 'Agency Name', array($this, 'govph_agency_name'), __FILE__, 'govph_main_section');
@@ -208,15 +207,6 @@ class GOVPH
   public function govph_general_section(){
   ?>
     <hr/>
-  <?php
-  }
-
-  public function govph_auxmenu()
-  {
-    $true = ($this->options['govph_auxmenu'] == 'true' ? "checked" : "");
-  ?>
-    <input type="checkbox" name="govph_options[govph_auxmenu]" value="true" <?php echo $true ?>>
-    <span class="description">Check to display Auxiliary Menu</span>
   <?php
   }
 
@@ -720,26 +710,6 @@ function govph_displayoptions( $options ){
   $option = get_option('govph_options');
 
   switch ($options) {
-    case 'govph_auxmenu':
-      if ($option['govph_auxmenu'] === 'true') {
-        // TODO: add template for aux menu
-      ?>
-
-			<div id="auxiliary" class="show-for-large">
-				<div class="row">
-					<div class="small-12 large-12 columns toplayer">
-						<nav id="aux-main" class="nomargin show-for-medium-up" data-dropdown-content>
-							<ul class="dropdown menu" data-dropdown-menu>
-								<?php wp_nav_menu( array('theme_location'  => 'aux_nav', 'items_wrap' => '%3$s', 'container' => false, 'walker' => new Topbar_Nav_Menu() )); ?>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</div>
-      
-      <?php
-      }
-      break;
     case 'govph_logo_enable':
       return (!empty($option['govph_logo_enable']) && $option['govph_logo_enable'] == 1);
       break;

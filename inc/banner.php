@@ -125,6 +125,17 @@ if(!is_home()){
 
 					<?php govph_displayoptions( 'govph_slider_end' ); ?>
 				</div>
-				<?php govph_displayoptions( 'govph_auxmenu' ); ?>
+
+				<div id="auxiliary" class="show-for-large">
+					<div class="row">
+						<div class="small-12 large-12 columns toplayer">
+							<nav id="aux-main" class="nomargin show-for-medium-up" data-dropdown-content>
+								<ul class="dropdown menu" data-dropdown-menu>
+								<?php wp_nav_menu( array('theme_location'  => 'aux_nav', 'items_wrap' => '%3$s', 'container' => false, 'fallback_cb' => false, 'walker' => new Topbar_Nav_Menu() )); ?>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
 
 <?php include_once('breadcrumbs.php'); ?>

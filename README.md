@@ -12,6 +12,10 @@ For a list of known issues and RFEs, check the [issue tracking system](https://g
  - Tabbed Theme Options
 
 ## CHANGE LOGS
+**02/23/2017**
+- Fixed empty menu issue when nothing is assigned
+- Added automatic display of auxiliary menu if menu is present, removed theme option selection
+
 **07/22/2016**
 - [Update] Foundation version 6.2.2
 - [Features] Philippine Standard Time (PST)

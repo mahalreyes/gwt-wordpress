@@ -151,10 +151,12 @@ Press esc, or click the close the button to close this dialog box.
 		<nav id="offCanvasRight" class="off-canvas position-right hide-for-large" data-off-canvas data-position="right">
 			<div class="list-item" ><?php get_search_form(); ?></div>
 			<ul class="vertical menu" data-drilldown data-parent-link="true">
-				<?php wp_nav_menu( array('theme_location'  => 'topbar_left', 'items_wrap' => '%3$s', 'container' => false, 'walker' => new Off_Canvass_Menu() )); ?> 
-				<?php wp_nav_menu( array('theme_location'  => 'topbar_right', 'items_wrap' => '%3$s', 'container' => false, 'walker' => new Off_Canvass_Menu() )); ?>
+				<?php wp_nav_menu( array('theme_location'  => 'topbar_left', 'items_wrap' => '%3$s', 'container' => false,'walker' => new Off_Canvass_Menu() )); ?> 
+				<?php wp_nav_menu( array('theme_location'  => 'topbar_right', 'items_wrap' => '%3$s', 'container' => false, 'fallback_cb' => false, 'walker' => new Off_Canvass_Menu() )); ?>
+				<?php // if(has_nav_menu('aux_nav')): ?>
 				<li id="aux-offmenu" class="list-item">AUXILIARY MENU</li>
-				<?php wp_nav_menu( array('theme_location'  => 'aux_nav', 'items_wrap' => '%3$s', 'container' => false, 'walker' => new Off_Canvass_Menu() )); ?>
+				<?php wp_nav_menu( array('theme_location'  => 'aux_nav', 'items_wrap' => '%3$s', 'container' => false, 'fallback_cb' => false, 'walker' => new Off_Canvass_Menu() )); ?>
+				<?php //endif; ?>
 			</ul>
 		</nav>
 
@@ -165,13 +167,13 @@ Press esc, or click the close the button to close this dialog box.
 					<nav class="top-bar-left">
 						<ul class="dropdown menu" data-dropdown-menu>
 							<li class="name"><a href="http://www.gov.ph">GOVPH</a></li>
-							<?php wp_nav_menu( array('theme_location'  => 'topbar_left', 'items_wrap' => '%3$s', 'container' => false, 'walker' => new Topbar_Nav_Menu() )); ?>
+							<?php wp_nav_menu( array('theme_location'  => 'topbar_left', 'items_wrap' => '%3$s', 'container' => false, 'fallback_cb' => false, 'walker' => new Topbar_Nav_Menu() )); ?>
 						</ul>
 					</nav>
 
 					<nav class="top-bar-right">
 						<ul class="dropdown menu" data-dropdown-menu>
-							<?php wp_nav_menu( array('theme_location'  => 'topbar_right', 'items_wrap' => '%3$s', 'container' => false, 'walker' => new Topbar_Nav_Menu() )); ?>
+							<?php wp_nav_menu( array('theme_location'  => 'topbar_right', 'items_wrap' => '%3$s', 'container' => false, 'fallback_cb' => false, 'walker' => new Topbar_Nav_Menu() )); ?>
 							<?php if(govph_displayoptions( 'govph_disable_search' )): ?>
 							<li class="search right"><?php get_search_form(); ?></li>
 							<?php endif ?>

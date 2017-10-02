@@ -70,6 +70,7 @@ function gwt_wp_setup() {
 	 *
 	 * See: https://codex.wordpress.org/Post_Formats
 	 */
+	/*
 	add_theme_support( 'post-formats', array(
 		'aside',
 		'image',
@@ -81,6 +82,7 @@ function gwt_wp_setup() {
 		'audio',
 		'chat',
 	) );
+	*/
 
 	// Indicate widget sidebars can use selective refresh in the Customizer.
 	add_theme_support( 'customize-selective-refresh-widgets' );

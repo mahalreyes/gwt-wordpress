@@ -20,8 +20,11 @@ function efs_register() {
   
     register_post_type(CPT_TYPE , $args );  
     set_post_thumbnail_size(CPT_THUMB_SIZE);
-}  
+}
 
 add_action('init', 'efs_register');
 
-?>
+function efs_disable_editor() {
+    remove_post_type_support( CPT_TYPE, 'editor' );
+}
+add_action('init', 'efs_disable_editor');

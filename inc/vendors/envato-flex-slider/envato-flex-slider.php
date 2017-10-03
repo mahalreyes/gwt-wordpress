@@ -35,13 +35,16 @@ function efs_get_slider(){
 
 		while (have_posts()) : the_post();
 			$img = get_the_post_thumbnail($post_id, 'full', array( 'class' => 'orbit-image' ));
-			$slide_link = get_the_content($post_id);
+			
+  		if(!$slide_link = slider_link_get_meta_box_data(get_the_ID())){
+				$slide_link = '#';
+  		}
 			$caption = get_the_title();
 
 			if ($x > $count) {
 				$x = 1;
 			}
-			$slider.='<li class="orbit-slide is-active"><div class="orbit-slide-number"><span>'.$x.'</span> of <span>'.$count.'</span></div><a href='.$slide_link.'>'.$img.'</a><figcaption class="orbit-caption">'.$caption.'</figcaption></li>';
+			$slider.= $post_id.'<li class="orbit-slide is-active"><div class="orbit-slide-number"><span>'.$x.'</span> of <span>'.$count.'</span></div><a href="'.$slide_link.'">'.$img.'</a><figcaption class="orbit-caption">'.$caption.'</figcaption></li>';
 			$x++;
 		endwhile;
 

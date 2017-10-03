@@ -15,7 +15,14 @@ function efs_register() {
         'capability_type' => 'post',  
         'hierarchical' => false,  
         'rewrite' => true,  
-        'supports' => array('title', 'editor', 'thumbnail')  
+        'supports' => array('title', 'editor', 'thumbnail'),
+        'public' => false,  // it's not public, it shouldn't have it's own permalink, and so on
+        'publicly_queryable' => true,  // you should be able to query it
+        'show_ui' => true,  // you should be able to edit it in wp-admin
+        'exclude_from_search' => true,  // you should exclude it from search results
+        'show_in_nav_menus' => false,  // you shouldn't be able to add it to menus
+        'has_archive' => false,  // it shouldn't have archive page
+        'rewrite' => false,  // it shouldn't have rewrite rules
        );  
   
     register_post_type(CPT_TYPE , $args );  
@@ -53,9 +60,10 @@ function slider_link_build_meta_box( $post ){
   $slider_link = get_post_meta( $post->ID, '_slider_link', true );
   ?>
   <div class='inside'>
-    <p><span class="field-prefix">http://</span>
-      <input type="text" name="slider_link" value="<?php echo $slider_link; ?>" /> 
-    </p>
+    <div>
+      <input type="text" name="slider_link" value="<?php echo $slider_link; ?>" style="width: 100%;" />
+      <p>To link to external path add http:// or https:// at the beginning of the URL.</p>
+    </div>
 
   </div>
   <?php
@@ -86,4 +94,17 @@ function slider_link_save_meta_box_data( $post_id ){
   }
 }
 add_action( 'save_post_slider-image', 'slider_link_save_meta_box_data' );
+
+function slider_link_get_meta_box_data($post_id){
+    // @todo: format the url into proper url
+    $slider_link = get_post_meta($post_id, '_slider_link', true);
+
+    if(substr($slider_link, 0, 7) == 'http://' || substr($slider_link, 0, 8) == 'https://'){
+        return $slider_link;
+    }
+    if(substr($slider_link, 0, 1) != '/'){
+        $slider_link = '/'.$slider_link;
+    }
+    return get_site_url().$slider_link;
+}
 

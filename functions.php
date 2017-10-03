@@ -91,11 +91,6 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/vendors/envato-flex-slider/envato-flex-slider.php';
 
 /**
- * Custom link field for the banner slider
- */
-require get_template_directory() . '/inc/vendors/envato-flex-slider/field-slider-link.php';
-
-/**
  * GWT only works in WordPress 4.4 or later.
  */
 if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {

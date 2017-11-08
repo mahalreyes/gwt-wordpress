@@ -43,7 +43,7 @@ add_action('init', 'efs_disable_editor');
  * @link https://codex.wordpress.org/Plugin_API/Action_Reference/add_meta_boxes
  */
 function slider_link_add_meta_boxes( $post ){
-  add_meta_box( 'slider_link_meta_box', __( 'Slider URL', 'efs_slider' ), 'slider_link_build_meta_box', CPT_TYPE, 'normal', 'low' );
+  add_meta_box( 'slider_link_meta_box', __( 'Slider Link', 'efs_slider' ), 'slider_link_build_meta_box', CPT_TYPE, 'normal', 'low' );
 }
 add_action( 'add_meta_boxes_slider-image', 'slider_link_add_meta_boxes' );
 
@@ -62,7 +62,7 @@ function slider_link_build_meta_box( $post ){
   <div class='inside'>
     <div>
       <input type="text" name="slider_link" value="<?php echo $slider_link; ?>" style="width: 100%;" />
-      <p>To link to external path add http:// or https:// at the beginning of the URL.</p>
+      <p>Enter the URL Linked to the slider image if any.<br/>To link internal path copy the permalink without the base URL. e.g. <strong>/2017/10/03/article-link</strong><br/> To link to external path add http:// or https:// at the beginning of the URL. e.g. <strong>http://example.com</strong></p>
     </div>
 
   </div>

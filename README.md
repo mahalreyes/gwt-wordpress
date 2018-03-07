@@ -12,6 +12,9 @@ For a list of known issues and RFEs, check the [issue tracking system](https://g
  - Tabbed Theme Options
 
 ## CHANGE LOGS
+**03/07/2018**
+- Fix long text wrapping in menu
+
 **10/03/2017**
 - Added URL Link support for banner Slider
 

@@ -12,6 +12,9 @@ For a list of known issues and RFEs, check the [issue tracking system](https://g
  - Tabbed Theme Options
 
 ## CHANGE LOGS
+**12/13/2018**
+- Fix theme missing color option issue
+
 **03/07/2018**
 - Fix long text wrapping in menu
 

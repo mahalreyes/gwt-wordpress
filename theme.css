@@ -109,6 +109,15 @@ h4 {font-size: 1.13rem;}
 h5 {font-size: 0.81rem;}
 h6 {font-size: 0.63rem;}
 
+/** default classes **/
+.alignright{
+	float: right;
+	margin-left: 1rem;
+}
+.alignleft{
+	float: left;
+	margin-right: 1rem;
+}
 
 /**
  * 4.0 - Elements

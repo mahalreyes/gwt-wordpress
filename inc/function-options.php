@@ -41,7 +41,24 @@ class GOVPH
 
       var custom_uploader;
 
-      $('.my-color-field').wpColorPicker();
+      colorPickerOption = {
+        hide: false,
+        pallete: false
+      };
+
+      $('#color-field-header-bg').iris(colorPickerOption);
+      $('#color-field-header-font').iris(colorPickerOption);
+      $('#color-field-slider').iris(colorPickerOption);
+      $('#color-field-pst').iris(colorPickerOption);
+      $('#color-field-anchor').iris(colorPickerOption);
+      $('#color-field-anchor-hover').iris(colorPickerOption);
+      $('#color-field-panel-top').iris(colorPickerOption);
+      $('#color-field-panel-bottom').iris(colorPickerOption);
+      $('#color-field-border-color').iris(colorPickerOption);
+      $('#color-field-widget-bg').iris(colorPickerOption);
+      $('#color-field-footer-bg').iris(colorPickerOption);
+
+      // $('.iris-picker').show();
       $('form').find('input#upload_image_button').on('click', function(e){
         e.preventDefault();
 
@@ -280,7 +297,7 @@ class GOVPH
   public function govph_header_color_setting()
   {
   ?>
-    <input name="govph_options[govph_headercolor]" type="text" value="<?php echo $this->options['govph_headercolor']; ?>" class="my-color-field" data-default-color="#142745" />
+    <input name="govph_options[govph_headercolor]" type="text" value="<?php echo $this->options['govph_headercolor']; ?>" class="my-color-field" id="color-field-header-bg" data-default-color="#142745" />
   <?php
   }
 
@@ -288,7 +305,7 @@ class GOVPH
   {
     $header_font_color = !empty($this->options['govph_header_font_color']) ? $this->options['govph_header_font_color'] : '#000';
   ?>
-    <input name="govph_options[govph_header_font_color]" type="text" value="<?php echo $header_font_color; ?>" class="my-color-field" data-default-color="#000" />
+    <input name="govph_options[govph_header_font_color]" type="text" value="<?php echo $header_font_color; ?>" class="my-color-field" id="color-field-header-font" data-default-color="#000" />
   <?php
   }
 
@@ -309,7 +326,7 @@ class GOVPH
   public function govph_slider_color_setting()
   {
   ?>
-    <input name="govph_options[govph_slidercolor]" type="text" value="<?php echo $this->options['govph_slidercolor']; ?>" class="my-color-field" data-default-color="#1f3a70" />
+    <input name="govph_options[govph_slidercolor]" type="text" value="<?php echo $this->options['govph_slidercolor']; ?>" class="my-color-field" id="color-field-slider" data-default-color="#1f3a70" />
   <?php
   }
   
@@ -376,7 +393,7 @@ class GOVPH
   {
     $govph_custom_pst = !empty($this->options['govph_custom_pst']) ? $this->options['govph_custom_pst'] : '#000000';
   ?>
-    <input name="govph_options[govph_custom_pst]" type="text" value="<?php echo $this->options['govph_custom_pst']; ?>" class="my-color-field" data-default-color="#000000" />
+    <input name="govph_options[govph_custom_pst]" type="text" value="<?php echo $this->options['govph_custom_pst']; ?>" class="my-color-field" id="color-field-pst" data-default-color="#000000" />
     <br><span class="description">Philippine Standard Time (PST) font customization</span>
   <?php
   }
@@ -384,7 +401,7 @@ class GOVPH
   public function govph_custom_anchorcolor()
   {
   ?>
-    <input name="govph_options[govph_custom_anchorcolor]" type="text" value="<?php echo $this->options['govph_custom_anchorcolor']; ?>" class="my-color-field" data-default-color="#2ba6cb" />
+    <input name="govph_options[govph_custom_anchorcolor]" type="text" value="<?php echo $this->options['govph_custom_anchorcolor']; ?>" class="my-color-field" id="color-field-anchor" data-default-color="#2ba6cb" />
     <br><span class="description">Change active links font color</span>
   <?php
   }
@@ -392,7 +409,7 @@ class GOVPH
   public function govph_custom_anchorcolor_hover()
   {
   ?>
-    <input name="govph_options[govph_custom_anchorcolor_hover]" type="text" value="<?php echo $this->options['govph_custom_anchorcolor_hover']; ?>" class="my-color-field" data-default-color="#258faf" />
+    <input name="govph_options[govph_custom_anchorcolor_hover]" type="text" value="<?php echo $this->options['govph_custom_anchorcolor_hover']; ?>" class="my-color-field" id="color-field-anchor-hover" data-default-color="#258faf" />
     <br><span class="description">Change active links font color</span>
   <?php
   }
@@ -401,7 +418,7 @@ class GOVPH
   {
     $govph_custom_panel_top = !empty($this->options['govph_custom_panel_top']) ? $this->options['govph_custom_panel_top'] : '#fffff';
   ?>
-    <input name="govph_options[govph_custom_panel_top]" type="text" value="<?php echo $this->options['govph_custom_panel_top']; ?>" class="my-color-field" data-default-color="#ffffff" />
+    <input name="govph_options[govph_custom_panel_top]" type="text" value="<?php echo $this->options['govph_custom_panel_top']; ?>" class="my-color-field" id="color-field-panel-top" data-default-color="#ffffff" />
     <br><span class="description">Background color for Panel Top section</span>
   <?php
   }
@@ -410,7 +427,7 @@ class GOVPH
   {
     $govph_custom_border_color = !empty($this->options['govph_custom_border_color']) ? $this->options['govph_custom_panel_bottom'] : '#fffff';
   ?>
-    <input name="govph_options[govph_custom_panel_bottom]" type="text" value="<?php echo $this->options['govph_custom_panel_bottom']; ?>" class="my-color-field" data-default-color="#fffff" />
+    <input name="govph_options[govph_custom_panel_bottom]" type="text" value="<?php echo $this->options['govph_custom_panel_bottom']; ?>" class="my-color-field" id="color-field-panel-bottom" data-default-color="#fffff" />
     <br><span class="description">Background color for Panel Bottom section</span>
   <?php
   }
@@ -473,7 +490,7 @@ class GOVPH
   {
     $govph_custom_border_color = !empty($this->options['govph_custom_border_color']) ? $this->options['govph_custom_border_color'] : '#bfbfbf';
   ?>
-    <input name="govph_options[govph_custom_border_color]" type="text" value="<?php echo $this->options['govph_custom_border_color']; ?>" class="my-color-field" data-default-color="#bfbfbf" />
+    <input name="govph_options[govph_custom_border_color]" type="text" value="<?php echo $this->options['govph_custom_border_color']; ?>" class="my-color-field" id="color-field-border-color" data-default-color="#bfbfbf" />
     <br><span class="description">Border color for widgets and main content area</span>
   <?php
   }
@@ -482,7 +499,7 @@ class GOVPH
   {
     $govph_custom_background_color = !empty($this->options['govph_custom_background_color']) ? $this->options['govph_custom_background_color'] : '#fcfcfc';
   ?>
-    <input name="govph_options[govph_custom_background_color]" type="text" value="<?php echo $this->options['govph_custom_background_color']; ?>" class="my-color-field" data-default-color="#fcfcfc" />
+    <input name="govph_options[govph_custom_background_color]" type="text" value="<?php echo $this->options['govph_custom_background_color']; ?>" class="my-color-field" id="color-field-widget-bg" data-default-color="#fcfcfc" />
     <br><span class="description">Background color for widgets and main content area</span>
   <?php
   }
@@ -541,7 +558,7 @@ class GOVPH
   {
     $govph_custom_footer_background_color = !empty($this->options['govph_custom_footer_background_color']) ? $this->options['govph_custom_footer_background_color'] : '#E9E9E9';
   ?>
-    <input name="govph_options[govph_custom_footer_background_color]" type="text" value="<?php echo $this->options['govph_custom_footer_background_color']; ?>" class="my-color-field" data-default-color="#E9E9E9" />
+    <input name="govph_options[govph_custom_footer_background_color]" type="text" value="<?php echo $this->options['govph_custom_footer_background_color']; ?>" class="my-color-field" id="color-field-footer-bg" data-default-color="#E9E9E9" />
     <br><span class="description">Background color for agency footer section</span>
   <?php
   }

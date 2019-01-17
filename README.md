@@ -12,6 +12,9 @@ For a list of known issues and RFEs, check the [issue tracking system](https://g
  - Tabbed Theme Options
 
 ## CHANGE LOGS
+**01/17/2019**
+- Fix missing jquery file issue causing to disable all scripts within the page
+
 **12/13/2018**
 - Fix theme missing color option issue
 - Added native style for alignleft alignright classes

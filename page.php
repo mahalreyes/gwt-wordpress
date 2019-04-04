@@ -31,14 +31,14 @@ include_once('inc/banner.php');
 		</div><!-- end content -->
 		
 		<?php 
-		if(is_active_sidebar('left-sidebar')){
+		if(is_active_sidebar('left-sidebar')):
 			govph_displayoptions( 'govph_sidebar_left' );
-		}
+		endif;
 		?>
 		<?php 
-		if(is_active_sidebar('right-sidebar')){
+		if(is_active_sidebar('right-sidebar')):
 			govph_displayoptions( 'govph_sidebar_right' );
-		}
+		endif;
 		?>
 		
 	</div><!-- end row -->

@@ -12,6 +12,9 @@ For a list of known issues and RFEs, check the [issue tracking system](https://g
  - Tabbed Theme Options
 
 ## CHANGE LOGS
+**04/04/2019**
+- Fix conditional display on rightsidebar
+
 **01/17/2019**
 - Fix missing jquery file issue causing to disable all scripts within the page
 

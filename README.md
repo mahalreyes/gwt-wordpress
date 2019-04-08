@@ -1,4 +1,6 @@
-# GWT for Wordpress -- wordpress-standards
+# Government Web Template (GWT) for WordPress
+
+[![Build Status](https://travis-ci.org/wpugph/gwt-wordpress.svg?branch=master)](https://travis-ci.org/wpugph/gwt-wordpress)
 
 This branch is dedicated to following the coding standards and also to improve the overall performance of the theme. Only use this branch as **EXPERIMENTAL version** only as there will be major changes within the code base that may affect some of the functionalities that have not yet been tested throughly.
 

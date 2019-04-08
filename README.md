@@ -11,3 +11,4 @@ If you found any bugs and issues kindly file an issue on the [repository issues]
 - fix space warnings on css and php files
 - replace jquery version instead of having multiple version
 - will not fix warnings from some of the third-party files
+- fix some implementations on loading favicons

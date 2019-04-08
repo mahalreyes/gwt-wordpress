@@ -18,28 +18,28 @@ is_active_sidebar('footer-4')): ?>
     <?php if(is_active_sidebar('footer-1')): ?>
     <div class="<?php govph_displayoptions( 'govph_position_agency_footer' ); ?>" role="complementary">
       <?php do_action( 'before_sidebar' ); ?>
-      <?php dynamic_sidebar( 'footer-1' ) ?>
+      <?php dynamic_sidebar( 'footer-1' ); ?>
     </div>
     <?php endif; // if active footer-1 ?>
 
     <?php if(is_active_sidebar('footer-2')): ?>
     <div class="<?php govph_displayoptions( 'govph_position_agency_footer' ); ?>" role="complementary">
       <?php do_action( 'before_sidebar' ); ?>
-      <?php dynamic_sidebar( 'footer-2' ) ?>
+      <?php dynamic_sidebar( 'footer-2' ); ?>
     </div>
     <?php endif; // if active footer-2 ?>
 
     <?php if(is_active_sidebar('footer-3')): ?>
     <div class="<?php govph_displayoptions( 'govph_position_agency_footer' ); ?>" role="complementary">
       <?php do_action( 'before_sidebar' ); ?>
-      <?php dynamic_sidebar( 'footer-3' ) ?>
+      <?php dynamic_sidebar( 'footer-3' ); ?>
     </div>
     <?php endif; // if active footer-3 ?>
 
     <?php if(is_active_sidebar('footer-4')): ?>
     <div class="<?php govph_displayoptions( 'govph_position_agency_footer' ); ?>" role="complementary">
       <?php do_action( 'before_sidebar' ); ?>
-      <?php dynamic_sidebar( 'footer-4' ) ?>
+      <?php dynamic_sidebar( 'footer-4' ); ?>
     </div>
     <?php endif; // if active footer-4 ?>
   </div>

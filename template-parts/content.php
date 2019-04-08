@@ -8,7 +8,7 @@
 <div class="post-box">
 	<article id="post-<?php the_ID(); ?>" <?php post_class('callout secondary'); ?>>
 		
-		<?php 
+		<?php
 			$content_class = 'large-12';
 			if(has_post_thumbnail()) : 
 				$content_class = 'large-9';

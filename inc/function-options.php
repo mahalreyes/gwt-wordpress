@@ -74,7 +74,7 @@ class GOVPH
     
     <h2>Theme Options Page</h2>
     <form action="options.php" method="post" enctype="multipart/form-data">
-      <?php settings_fields('govph_options') ?>
+      <?php settings_fields('govph_options'); ?>
       <?php do_settings_sections(__FILE__); ?>
 
       <p class="class">

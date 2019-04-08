@@ -15,7 +15,7 @@ include_once('inc/banner.php');
 	<div class="row">
 		
 		<div id="content" class="<?php govph_displayoptions( 'govph_content_position' ); ?>columns" role="main">
-		<?php 
+		<?php
 			while(have_posts()): the_post();
 			
 				get_template_part('template-parts/content', 'single');
@@ -24,12 +24,12 @@ include_once('inc/banner.php');
 		?>
 		</div><!-- end content -->
 		
-		<?php 
+		<?php
 		if(is_active_sidebar('left-sidebar')){
 			govph_displayoptions( 'govph_sidebar_left' );
 		}
 		?>
-		<?php 
+		<?php
 		if(is_active_sidebar('right-sidebar')){
 			govph_displayoptions( 'govph_sidebar_right' );
 		}

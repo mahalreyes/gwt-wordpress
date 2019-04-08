@@ -1,4 +1,4 @@
-<?php 
+<?php
 if (is_home()){
 	$banner_class = 'large-12';
 	$banner_2_class = '';
@@ -41,14 +41,14 @@ if(!is_home()){
 		<?php if(is_active_sidebar('banner-section-1')): ?>
 			<div id="banner-section-1" class="<?php echo $banner_2_class ?>">
 				<?php do_action( 'before_sidebar' ); ?>
-				<?php dynamic_sidebar( 'banner-section-1' ) ?>
+				<?php dynamic_sidebar( 'banner-section-1' ); ?>
 			</div>
 		<?php endif; ?>
 
 		<?php if(is_active_sidebar('banner-section-2')): ?>
 			<div id="banner-section-2" class="<?php echo $banner_3_class ?>">
 				<?php do_action( 'before_sidebar' ); ?>
-				<?php dynamic_sidebar( 'banner-section-2' ) ?>
+				<?php dynamic_sidebar( 'banner-section-2' ); ?>
 			</div>
 		<?php endif; ?>
 

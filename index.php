@@ -39,12 +39,12 @@ include_once('inc/banner.php');
 						endif; ?>
 				</div><!-- end content -->
 				   
-				<?php 
+				<?php
 				if(is_active_sidebar('left-sidebar')){
 					govph_displayoptions( 'govph_sidebar_left' );
 				}
 				?>
-				<?php 
+				<?php
 				if(is_active_sidebar('right-sidebar')){
 					govph_displayoptions( 'govph_sidebar_right' );
 				}

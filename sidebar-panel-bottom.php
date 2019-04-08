@@ -12,25 +12,25 @@
 		<?php if(is_active_sidebar('panel-bottom-1')): ?>
 		<aside id="panel-bottom-1" class="<?php govph_displayoptions( 'govph_position_panel_bottom' ); ?>" role="complementary">
 			<?php do_action( 'before_sidebar' ); ?>
-			<?php dynamic_sidebar( 'panel-bottom-1' ) ?>
+			<?php dynamic_sidebar( 'panel-bottom-1' ); ?>
 		</aside>
 		<?php endif; ?>
 		<?php if(is_active_sidebar('panel-bottom-2')): ?>
 		<aside id="panel-bottom-2" class="<?php govph_displayoptions( 'govph_position_panel_bottom' ); ?>" role="complementary">
 			<?php do_action( 'before_sidebar' ); ?>
-			<?php dynamic_sidebar( 'panel-bottom-2' ) ?>
+			<?php dynamic_sidebar( 'panel-bottom-2' ); ?>
 		</aside>
 		<?php endif; ?>
 		<?php if(is_active_sidebar('panel-bottom-3')): ?>
 		<aside id="panel-bottom-3" class="<?php govph_displayoptions( 'govph_position_panel_bottom' ); ?>" role="complementary">
 			<?php do_action( 'before_sidebar' ); ?>
-			<?php dynamic_sidebar( 'panel-bottom-3' ) ?>
+			<?php dynamic_sidebar( 'panel-bottom-3' ); ?>
 		</aside>
 		<?php endif; ?>
 		<?php if(is_active_sidebar('panel-bottom-4')): ?>
 		<aside id="panel-bottom-4" class="<?php govph_displayoptions( 'govph_position_panel_bottom' ); ?>" role="complementary">
 			<?php do_action( 'before_sidebar' ); ?>
-			<?php dynamic_sidebar( 'panel-bottom-4' ) ?>
+			<?php dynamic_sidebar( 'panel-bottom-4' ); ?>
 		</aside>
 		<?php endif; ?>
 	</div>

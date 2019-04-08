@@ -20,7 +20,7 @@
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
-	<link rel="icon" href="<?php echo get_template_directory_uri() ?>/favicon.ico">
+	<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
 	<?php wp_head(); ?>
 
 	<style <?php the_tags(); ?>>
@@ -68,7 +68,7 @@
 		}
 	</style>
 	<script type="text/javascript" language="javascript">
-		var template_directory = '<?php echo get_template_directory_uri() ?>';
+		var template_directory = '<?php echo get_template_directory_uri(); ?>';
 	</script>
 </head>
 
@@ -247,14 +247,14 @@ Press esc, or click the close the button to close this dialog box.
 					<?php if(is_active_sidebar('ear-content-1')): ?>
 						<div class="<?php echo $ear_content_class ?> columns">
 							<?php do_action( 'before_sidebar' ); ?>
-							<?php dynamic_sidebar( 'ear-content-1' ) ?>
+							<?php dynamic_sidebar( 'ear-content-1' ); ?>
 						</div>
 					<?php endif; ?>
 
 					<?php if(is_active_sidebar('ear-content-2')): ?>
 						<div class="<?php echo $ear_content_2_class ?> columns">
 							<?php do_action( 'before_sidebar' ); ?>
-							<?php dynamic_sidebar( 'ear-content-2' ) ?>
+							<?php dynamic_sidebar( 'ear-content-2' ); ?>
 						</div>
 					<?php endif; ?>
 				</div>

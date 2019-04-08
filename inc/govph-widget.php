@@ -74,7 +74,7 @@ class govph_widget_transparency extends WP_Widget {
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'url' ) ); ?>" type="text" value="<?php echo esc_attr( $url ); ?>">
 			<span class="description"><em>insert the url of transparency page</em></span>
 		</p>
-		<?php 
+		<?php
 	}
 }
 

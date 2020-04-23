@@ -1,3 +1,4 @@
+#Fork of mahalreyes for its own use forked by @Ramon3rd Government Web Template (GWT) for WordPress
 #Government Web Template (GWT) for WordPress
 
 Use this as a a guide for creating your banner slider images:
